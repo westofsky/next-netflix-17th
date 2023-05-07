@@ -24,12 +24,12 @@
 
 - [결과화면](https://next-netflix-16th-pre-folio-front.vercel.app/)의 랜딩 페이지와 메인 페이지를 구현합니다.
 - [Figma](https://www.figma.com/file/UqdXDovIczt1Gl0IjknHQf/Netflix?node-id=0%3A1)의 디자인을 그대로 구현합니다.
-- SSR(Server Side Rendering)을 적용해서 구현합니다.
 - Open api를 사용해서 데이터 패칭을 진행합니다. (ex. [themoviedb API](https://developers.themoviedb.org/3/getting-started/introduction))
 - `yarn`, `yarn berry`, `npm`, `pnpm`등 패키지 매니저를 직접 선택해 Next.js를 세팅해 봅니다.
 
 ### 선택 사항
 
+- SSR(Server Side Rendering)을 적용해서 구현합니다.
 - 웹 폰트를 사용합니다.
 - 반응형을 고려합니다.
 
