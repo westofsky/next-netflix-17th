@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import axios from '../api/axios';
-import requests from '../api/requests';
+import axios from './../api/axios';
+import requests from './../api/requests';
 import styled from 'styled-components';
 
 export const Banner = () => {
@@ -32,7 +32,6 @@ export const Banner = () => {
 
   return (
     <Header
-      className="banner"
       style={{
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
         backgroundPosition: 'top center',
@@ -42,23 +41,6 @@ export const Banner = () => {
   );
 };
 
-const Iframe = styled.iframe`
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.65;
-  border: none;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-`;
-
 const Header = styled.div`
   display: flex;
   justify-content: center;
@@ -66,9 +48,4 @@ const Header = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100vh;
-`;
-
-const HomeContainer = styled.div`
-  width: 100%;
-  height: 100%;
 `;

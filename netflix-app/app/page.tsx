@@ -1,7 +1,7 @@
 'use client';
 import styled from 'styled-components';
 
-export default function Home() {
+export default function app() {
   return (
     <Wrapper>
       <h1>테스트세트ㅅ</h1>
