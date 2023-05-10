@@ -1,14 +1,16 @@
-import {Banner} from './components/Banner'
+'use client';
+import styled from 'styled-components';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-          <Banner></Banner>
-        
-      </div>
-
-      
-    </main>
+    <Wrapper>
+      <h1>테스트세트ㅅ</h1>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  background-color : red;
+  width : 100vw;
+  height : 100vh;
+`
