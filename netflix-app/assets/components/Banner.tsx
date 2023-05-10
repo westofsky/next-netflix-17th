@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import instance from './../api/axios';
 //import fetchNowPlaying from './../api/requests';
 import styled from 'styled-components';
-const API_KEY = '4a87076c7a6bfe146f57401604176096';
 
-export const Banner = () => {
+export const Banner = ({ fetchUrl }: any) => {
   const [movie, setMovie] = useState([] as any);
 
   useEffect(() => {
@@ -14,11 +13,7 @@ export const Banner = () => {
 
   const fetchData = async () => {
     // 현재 상영중인 영화들 가져오기
-    const { results } = await (
-      await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`
-      )
-    ).json();
+    const { results } = await (await fetch(fetchUrl)).json();
     // 상영중인 여러 영화 중 한 영화의 ID 가져오기
     const movieId = results[Math.floor(Math.random() * results.length)].id;
 
