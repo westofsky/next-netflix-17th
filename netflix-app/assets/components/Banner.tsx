@@ -1,8 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import axios from './../api/axios';
-import requests from './../api/requests';
+import instance from './../api/axios';
+//import fetchNowPlaying from './../api/requests';
 import styled from 'styled-components';
+const API_KEY = '4a87076c7a6bfe146f57401604176096';
 
 export const Banner = () => {
   const [movie, setMovie] = useState([] as any);
@@ -12,17 +13,17 @@ export const Banner = () => {
   }, []);
 
   const fetchData = async () => {
-    // 현재 상영중인 영화 정보를 가져오기(여러 영화)
-    const request = await axios.get(requests.fetchNowPlaying);
+    // 현재 상영중인 영화들 가져오기
+    const { results } = await (
+      await fetch(
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`
+      )
+    ).json();
+    // 상영중인 여러 영화 중 한 영화의 ID 가져오기
+    const movieId = results[Math.floor(Math.random() * results.length)].id;
 
-    // 여러 영화 중 영화 하나의 ID를 가져오기
-    const movieId =
-      request.data.results[
-        Math.floor(Math.random() * request.data.results.length)
-      ].id;
-
-    // 특정 영화의 더 상세한 정보를 가져오기(비디오 정보도 포함)
-    const { data: movieDetail } = await axios.get(`movie/${movieId}`, {
+    // 특정 영화의 상세 정보를 가져오기(비디오 정보 포함)
+    const { data: movieDetail } = await instance.get(`movie/${movieId}`, {
       params: { append_to_response: 'videos' },
     });
     setMovie(movieDetail);
@@ -42,10 +43,16 @@ export const Banner = () => {
 };
 
 const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  position: absolute;
+  width: 424.05px;
+  height: 415px;
+  left: -24.52px;
+  top: 0px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0) 87.26%,
+    #000000 100%
+  );
 `;
