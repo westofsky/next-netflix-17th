@@ -1,5 +1,6 @@
 'use client';
 import './globals.css';
+import ReactQueryProvider from "./ReactQueryProvider";
 
 export default function RooteLayout({
   children,
@@ -9,7 +10,7 @@ export default function RooteLayout({
   return (
     <html>
       <body className = "w375 h746 ma">
-          {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
