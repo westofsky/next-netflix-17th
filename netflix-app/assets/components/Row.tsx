@@ -17,9 +17,6 @@ export const Row = ({ title, id, isRoundRow, fetchUrl }: any) => {
   };
   console.log('results', movies);
 
-  movies.map((movie: any) => {
-    console.log(`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`);
-  });
   return (
     <Movies>
       <Title>{title}</Title>
@@ -28,13 +25,13 @@ export const Row = ({ title, id, isRoundRow, fetchUrl }: any) => {
           !isRoundRow ? (
             <RectangularMovie
               key={movie.id}
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt={movie.name}
             />
           ) : (
             <RoundMovie
               key={movie.id}
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt={movie.name}
             />
           )
@@ -50,6 +47,7 @@ const Movie = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  margin: 5px 0 25px 0;
 `;
 const Title = styled.div`
   width: 150px;
@@ -75,7 +73,8 @@ const RectangularMovie = styled.img`
 `;
 const RoundMovie = styled.img`
   margin-right: 7px;
-  width: 102px;
-  height: 102px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
+  object-fit: cover;
 `;

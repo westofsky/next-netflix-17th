@@ -18,8 +18,8 @@ export const Button = () => {
 };
 
 const Container = styled.div`
-  width: 259px;
-  height: 45px;
+  display: flex;
+  justify-content: center;
 `;
 const MyListButton = styled.div`
   .text {
