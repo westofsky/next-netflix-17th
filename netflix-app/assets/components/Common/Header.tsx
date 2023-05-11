@@ -1,39 +1,67 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 
-function Header(){
+function Header() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      console.log('window.scrollY', window.scrollY);
+
+      if (window.scrollY > 200) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener('scroll', () => {});
+    };
+  }, []);
+
   return (
     <HeaderWrapper>
-      <LogoLink href={'/'}>
-        <LogoWrapper src={`/netflix_trans.png`}></LogoWrapper>
-	  	</LogoLink>
-      <LogoLink href={'/pages'}>
-				<HeaderMenu>TV Shows</HeaderMenu>
-			</LogoLink>
-			<LogoLink href={'/pages'}>
-				<HeaderMenu>Movies</HeaderMenu>
-			</LogoLink>
-			<LogoLink href={'/pages'}>
-				<HeaderMenu>My List</HeaderMenu>
-			</LogoLink>
-		</HeaderWrapper>
-	);
-};
+      <div className={`nav ${show && 'nav_black'}`}>
+        <LogoLink href={'/'}>
+          <LogoWrapper src={`/netflix_trans.png`}></LogoWrapper>
+        </LogoLink>
+        <LogoLink href={'/pages'}>
+          <HeaderMenu>TV Shows</HeaderMenu>
+        </LogoLink>
+        <LogoLink href={'/pages'}>
+          <HeaderMenu>Movies</HeaderMenu>
+        </LogoLink>
+        <LogoLink href={'/pages'}>
+          <HeaderMenu>My List</HeaderMenu>
+        </LogoLink>
+      </div>
+    </HeaderWrapper>
+  );
+}
 
 export default Header;
 
 const HeaderWrapper = styled.div`
-  width: 375px;
-  padding: 1rem 0 1rem 0;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
+  .nav {
+    width: 375px;
+    padding: 1rem 0 1rem 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+  }
+  .nav_black {
+    background-color: #111;
+  }
 `;
 const LogoLink = styled(Link)`
-	text-decoration : none;
-`
+  text-decoration: none;
+`;
 const HeaderMenu = styled.p`
   font-size: 17.2px;
   color: white;
