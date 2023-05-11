@@ -24,8 +24,6 @@ export const Banner = ({ fetchUrl }: any) => {
     setMovie(movieDetail);
   };
 
-  console.log('movie', movie);
-
   return (
     <Header
       style={{

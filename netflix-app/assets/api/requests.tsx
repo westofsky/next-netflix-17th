@@ -1,11 +1,11 @@
 import instance from './axios';
 const API_KEY = '4a87076c7a6bfe146f57401604176096';
 
-// export const fetchNowPlaying = () => {
-//   return instance
-//     .get(`movie/now_playing?api_key=${API_KEY}`)
-//     .then((res) => res.data);
-// };
+export const fetchNowPlaying = () => {
+  return instance
+    .get(`movie/now_playing?api_key=${API_KEY}`)
+    .then((res) => res.data);
+};
 
 // const requests = {
 //   fetchNowPlaying: 'movie/now_playing',

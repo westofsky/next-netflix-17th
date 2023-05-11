@@ -15,7 +15,6 @@ export const Row = ({ title, id, isRoundRow, fetchUrl }: any) => {
     const { results } = await (await fetch(fetchUrl)).json();
     setMovie(results);
   };
-  console.log('results', movies);
 
   return (
     <Movies>
