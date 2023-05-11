@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import instance from './../api/axios';
 import styled from 'styled-components';
 
-export const Row = ({ title, id, fetchUrl }: any) => {
+export const Row = ({ title, id, isRoundRow, fetchUrl }: any) => {
   const [movies, setMovie] = useState([] as any);
 
   useEffect(() => {
@@ -20,31 +20,33 @@ export const Row = ({ title, id, fetchUrl }: any) => {
   movies.map((movie: any) => {
     console.log(`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`);
   });
-
   return (
     <Movies>
       <Title>{title}</Title>
-      <G>
-        <H id={id}>
-          {movies.map((movie: any) => (
-            <Movie
+      <Movie id={id}>
+        {movies.map((movie: any) =>
+          !isRoundRow ? (
+            <RectangularMovie
               key={movie.id}
               src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
               alt={movie.name}
             />
-          ))}
-        </H>
-      </G>
+          ) : (
+            <RoundMovie
+              key={movie.id}
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              alt={movie.name}
+            />
+          )
+        )}
+      </Movie>
     </Movies>
   );
 };
-
-const G = styled.div`
-`;
-const H = styled.div`
-  width : 100%;
+const Movie = styled.div`
+  width: 100%;
   display: flex;
-  overflow-x : auto;
+  overflow-x: auto;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -65,8 +67,15 @@ const Title = styled.div`
 const Movies = styled.div`
   padding-left: 18px;
 `;
-const Movie = styled.img`
+const RectangularMovie = styled.img`
   margin-right: 7px;
   width: 103px;
   height: 161px;
+  border-radius: 4px;
+`;
+const RoundMovie = styled.img`
+  margin-right: 7px;
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
 `;
