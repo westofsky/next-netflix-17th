@@ -1,16 +1,26 @@
 'use client';
 import styled from 'styled-components';
+import NetflixComponent from '@/assets/components/Landing/NetflixComponent';
 
 export default function app() {
   return (
     <Wrapper>
-      <h1>테스트세트ㅅ</h1>
+      <WrapLanding>
+        <NetflixComponent/>
+      </WrapLanding>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  background-color: red;
+  background-color: black;
   width: 100vw;
   height: 100vh;
 `;
+
+const WrapLanding = styled.div`
+  width : 375px;
+  height : 736px;
+  margin : 0 auto;
+
+`
