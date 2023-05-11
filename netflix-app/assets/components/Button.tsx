@@ -18,7 +18,6 @@ export const Button = () => {
 };
 
 const Container = styled.div`
-  position: absolute;
   width: 259px;
   height: 45px;
   left: 54px;

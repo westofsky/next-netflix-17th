@@ -17,50 +17,58 @@ export const Row = ({ title, id, fetchUrl }: any) => {
   };
   console.log('results', movies);
 
+  movies.map((movie: any) => {
+    console.log(`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`);
+  });
+
   return (
-    <Container>
-      <Movies id={id}>
-        <Title>{title}</Title>
-        {movies.map((movie: any) => {
-          <Movie
-            key={movie.id}
-            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-            alt={movie.name}
-          ></Movie>;
-        })}
-      </Movies>
-    </Container>
+    <Movies>
+      <Title>{title}</Title>
+      <G>
+        <H id={id}>
+          {movies.map((movie: any) => (
+            <Movie
+              key={movie.id}
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              alt={movie.name}
+            />
+          ))}
+        </H>
+      </G>
+    </Movies>
   );
 };
 
-const Container = styled.div``;
+const G = styled.div`
+  width: 363px;
+  height: 191px;
+  overflow-x: scroll;
+  overflow: hidden;
+`;
+const H = styled.div`
+  display: flex;
+`;
 const Title = styled.div`
-  position: absolute;
-  width: 168px;
-  height: 16px;
-  left: 16px;
+  width: 150px;
+  height: 45px;
 
   font-family: 'SF Pro Display';
   font-style: normal;
   font-weight: 700;
-  font-size: 20.9212px;
-  line-height: 16px;
-
-  letter-spacing: -0.0574057px;
+  font-size: 26.7482px;
+  line-height: 20px;
+  letter-spacing: -0.0733945px;
 
   color: #ffffff;
 `;
 const Movies = styled.div`
-  position: absolute;
-  width: 543px;
-  height: 161px;
-  left: 0px;
-  top: 1139px;
+  width: 363px;
+  height: 230px;
+  padding-left: 18px;
 `;
 const Movie = styled.img`
-  position: absolute;
+  margin-right: 7px;
   width: 103px;
   height: 161px;
-  left: 0px;
   top: 0px;
 `;
