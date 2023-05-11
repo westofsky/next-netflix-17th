@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import { Banner } from '../../assets/components/Banner';
 import { Button } from '../../assets/components/Button';
 import { Row } from '../../assets/components/Row';
+import Header from '@/assets/components/Common/Header';
 const API_KEY = '4a87076c7a6bfe146f57401604176096';
 
 export default function main() {
   return (
     <Container>
+      <Header />
       <Banner
         fetchUrl={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`}
       />
