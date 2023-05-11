@@ -52,6 +52,7 @@ const FooterItem = styled.div<{ selected: boolean }>`
   cursor: pointer;
   color: ${(props) => (props.selected ? '#E0E0E0' : '#757575')};
   font-size : 25px;
+  margin-top : 3px;
   display : flex;
   flex-direction : column;
   align-items :center;
@@ -63,4 +64,5 @@ const FooterItem = styled.div<{ selected: boolean }>`
 
 const FooterItemText = styled.p`
   font-size : 10px;
+  margin-top : 0;
 `

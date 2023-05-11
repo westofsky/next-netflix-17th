@@ -36,7 +36,7 @@ export const Banner = ({ fetchUrl }: any) => {
 };
 
 const Header = styled.div`
-  width: 424.05px;
+  width: 375px;
   height: 415px;
 
   background: linear-gradient(

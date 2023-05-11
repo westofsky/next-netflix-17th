@@ -15,8 +15,8 @@ export default function main() {
 
   return (
     <Container>
-      <Banner fetchUrl={nowPlayingUrl} />
       <Header />
+      {/* <Banner fetchUrl={nowPlayingUrl} /> */}
       <Banner
         fetchUrl={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`}
       />

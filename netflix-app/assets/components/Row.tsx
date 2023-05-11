@@ -28,11 +28,13 @@ export const Row = ({ title, id, isRoundRow, fetchUrl }: any) => {
               alt={movie.name}
             />
           ) : (
-            <RoundMovie
-              key={movie.id}
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt={movie.name}
-            />
+						<WrapRoundMovie
+							key={movie.id}>
+							<RoundMovie
+								src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+								alt={movie.name}
+							/>
+						</WrapRoundMovie>
           )
         )}
       </Movie>
@@ -75,4 +77,9 @@ const RoundMovie = styled.img`
   width: 130px;
   height: 130px;
   border-radius: 50%;
+	object-fit: cover;
 `;
+const WrapRoundMovie = styled.div`
+	width : 130px;
+	height : 130px;
+`
