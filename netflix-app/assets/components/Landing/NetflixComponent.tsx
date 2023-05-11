@@ -6,7 +6,7 @@ import animationData from './NetflixLogo.json';
 function NetflixComponent() {
   const router = useRouter();
   const handleOnComplete = () => {
-    router.push('/main');
+    router.push('/pages/');
   }
   return (
     <Wrapper>

@@ -20,15 +20,11 @@ export const Button = () => {
 const Container = styled.div`
   width: 259px;
   height: 45px;
-  left: 54px;
 `;
 const MyListButton = styled.div`
   .text {
-    position: absolute;
     width: 41px;
     height: 20px;
-    left: 54px;
-    top: 453px;
 
     font-family: 'SF Pro Display';
     font-style: normal;
@@ -44,20 +40,14 @@ const MyListButton = styled.div`
   }
 `;
 const PlayButton = styled.div`
-  position: absolute;
   width: 110.62px;
   height: 45px;
-  left: 137px;
-  top: 428px;
   background: #c4c4c4;
   border-radius: 5.625px;
 
   .text {
-    position: absolute;
     width: 39px;
     height: 30px;
-    left: calc(50% - 39px / 2 + 21px);
-    top: 8px;
 
     font-family: 'SF Pro Display';
     font-style: normal;
@@ -75,11 +65,8 @@ const PlayButton = styled.div`
 `;
 const InfoButton = styled.div`
   .text {
-    position: absolute;
     width: 22px;
     height: 20px;
-    left: 290px;
-    top: 453px;
 
     font-family: 'SF Pro Display';
     font-style: normal;

@@ -40,13 +40,14 @@ export const Row = ({ title, id, fetchUrl }: any) => {
 };
 
 const G = styled.div`
-  width: 363px;
-  height: 191px;
-  overflow-x: scroll;
-  overflow: hidden;
 `;
 const H = styled.div`
+  width : 100%;
   display: flex;
+  overflow-x : auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 const Title = styled.div`
   width: 150px;
@@ -62,13 +63,10 @@ const Title = styled.div`
   color: #ffffff;
 `;
 const Movies = styled.div`
-  width: 363px;
-  height: 230px;
   padding-left: 18px;
 `;
 const Movie = styled.img`
   margin-right: 7px;
   width: 103px;
   height: 161px;
-  top: 0px;
 `;

@@ -46,5 +46,4 @@ const Container = styled.div`
 
 const Rows = styled.div`
   height: 1000px;
-  margin-top: 500px;
 `;

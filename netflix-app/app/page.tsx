@@ -21,6 +21,5 @@ const Wrapper = styled.div`
 const WrapLanding = styled.div`
   width : 375px;
   height : 736px;
-  margin : 0 auto;
 
 `
