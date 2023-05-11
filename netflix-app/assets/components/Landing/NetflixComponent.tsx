@@ -12,7 +12,8 @@ function NetflixComponent() {
     <Wrapper>
       <Lottie 
         animationData={animationData}
-        onLoopComplete = {handleOnComplete}
+        loop={false}
+        onComplete = {handleOnComplete}
       />
     </Wrapper>
   );
