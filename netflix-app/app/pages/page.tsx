@@ -6,6 +6,7 @@ import { Button } from '../../assets/components/Button';
 import { Row } from '../../assets/components/Row';
 import { fetchNowPlaying } from './../../assets/api/requests';
 import { useQuery } from '@tanstack/react-query';
+import Header from '@/assets/components/Common/Header';
 const API_KEY = '4a87076c7a6bfe146f57401604176096';
 
 export default function main() {
@@ -15,6 +16,10 @@ export default function main() {
   return (
     <Container>
       <Banner fetchUrl={nowPlayingUrl} />
+      <Header />
+      <Banner
+        fetchUrl={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`}
+      />
       <Button />
       <Rows>
         <Row
