@@ -2,31 +2,56 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Row = ({ title, id, isRoundRow, fetchUrl, movies }: any) => {
+export const Row = ({ title, id, isRoundRow, movies }: any) => {
   return (
     <Movies>
       <Title>{title}</Title>
-      <Movie id={id}>
-        {movies.map((movie: any) =>
-          !isRoundRow ? (
-            <RectangularMovie
-              key={movie.id}
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt={movie.name}
-            />
-          ) : (
-            <WrapRoundMovie key={movie.id}>
-              <RoundMovie
+      <Slider>
+        <Arrow
+          onClick={() => {
+            document.getElementById(id).scrollLeft -= window.innerWidth - 80;
+          }}
+        >
+          {'<'}
+        </Arrow>
+        <Movie id={id}>
+          {movies.map((movie: any) =>
+            !isRoundRow ? (
+              <RectangularMovie
+                key={movie.id}
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={movie.name}
               />
-            </WrapRoundMovie>
-          )
-        )}
-      </Movie>
+            ) : (
+              <WrapRoundMovie key={movie.id}>
+                <RoundMovie
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  alt={movie.name}
+                />
+              </WrapRoundMovie>
+            )
+          )}
+        </Movie>
+        <Arrow
+          onClick={() => {
+            document.getElementById(id).scrollLeft += window.innerWidth - 80;
+          }}
+        >
+          {'>'}
+        </Arrow>
+      </Slider>
     </Movies>
   );
 };
+const Slider = styled.div`
+  display: flex;
+`;
+const Arrow = styled.div`
+  font-size: 30px;
+  color: white;
+  // z-index: 1;
+  // position: fixed;
+`;
 const Movie = styled.div`
   width: 100%;
   display: flex;
