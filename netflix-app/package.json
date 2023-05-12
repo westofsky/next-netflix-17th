@@ -33,11 +33,10 @@
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
   },
-  "packageManager": "yarn@3.5.1",
+  "packageManager": "npm@9.5.1",
   "devDependencies": {
     "@babel/parser": "^7.21.8",
     "@babel/preset-env": "^7.21.5",
-    "@yarnpkg/sdks": "^3.0.0-rc.43",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.8"
