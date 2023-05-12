@@ -31,11 +31,12 @@ export async function getServerSideProps() {
   };
 }
 
-export default function main({ upComingData }: any) {
+export default function main(upComingData: any, upComingRes: any) {
   //여기가 안 되는 중
   // const nowPlayingUrl = useQuery(['nowPlaying'], fetchNowPlaying); //이건 useQuery 썼던 건데 일단 무시
   //console.log(nowPlayingData);
 
+  console.log(upComingRes);
   console.log(upComingData);
 
   return (
