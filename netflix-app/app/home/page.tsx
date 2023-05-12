@@ -12,7 +12,7 @@ import {
 } from '@/assets/api/requests';
 import Header from '@/assets/components/Common/Header';
 
-export async function getMovieData() {
+async function getMovieData() {
   const getBannerData = await fetchBanner();
 
   const upComingData = await fetchUpComing();
