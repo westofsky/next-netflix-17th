@@ -10,7 +10,8 @@ import {
   fetchUpComing,
   fetchBanner,
 } from '@/assets/api/requests';
-import Header from '@/assets/components/Common/Header';
+import Header from '@/assets/components/Common/Header'
+import { useEffect } from 'react';
 
 async function getMovieData() {
   const getBannerData = await fetchBanner();
@@ -34,7 +35,6 @@ async function getMovieData() {
 
 export default async function main() {
   const movies = await getMovieData();
-
   return (
     <Container>
       <Header />
