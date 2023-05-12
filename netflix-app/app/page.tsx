@@ -6,7 +6,7 @@ export default function app() {
   return (
     <Wrapper>
       <WrapLanding>
-        <NetflixComponent/>
+        <NetflixComponent />
       </WrapLanding>
     </Wrapper>
   );
@@ -17,7 +17,6 @@ const Wrapper = styled.div`
 `;
 
 const WrapLanding = styled.div`
-  width : 375px;
-  height : 736px;
-
-`
+  width: 375px;
+  height: 736px;
+`;

@@ -5,19 +5,15 @@ import animationData from './NetflixLogo.json';
 
 export const NetflixComponent = () => {
   const router = useRouter();
-  const handleOnComplete = () => {
+  const goPage = setTimeout(() => {
     router.push('/pages/');
-  }
+  }, 4000);
   return (
     <Wrapper>
-      <Lottie 
-        animationData={animationData}
-        loop={false}
-        onComplete = {handleOnComplete}
-      />
+      <Lottie animationData={animationData} loop={false} />
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.div`
   height: 372px;

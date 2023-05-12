@@ -1,37 +1,36 @@
 import styled from 'styled-components';
-import {BiHomeAlt2} from 'react-icons/bi';
-import {FiSearch} from 'react-icons/fi';
-import {MdOutlineVideoLibrary} from 'react-icons/md';
-import {HiDownload} from 'react-icons/hi';
-import {BsList} from 'react-icons/bs';
+import { BiHomeAlt2 } from 'react-icons/bi';
+import { FiSearch } from 'react-icons/fi';
+import { MdOutlineVideoLibrary } from 'react-icons/md';
+import { HiDownload } from 'react-icons/hi';
+import { BsList } from 'react-icons/bs';
 
 export const Footer = () => {
-
   return (
     <FooterWrapper>
-      <FooterItem selected = {true}>
-        <BiHomeAlt2/>
+      <FooterItem selected={true}>
+        <BiHomeAlt2 />
         <FooterItemText>Home</FooterItemText>
       </FooterItem>
-      <FooterItem selected = {false}>
-        <FiSearch/>
+      <FooterItem selected={false}>
+        <FiSearch />
         <FooterItemText>Search</FooterItemText>
       </FooterItem>
-      <FooterItem selected = {false}>
-        <MdOutlineVideoLibrary/>
+      <FooterItem selected={false}>
+        <MdOutlineVideoLibrary />
         <FooterItemText>Coming Soon</FooterItemText>
       </FooterItem>
-      <FooterItem selected = {false}>
-        <HiDownload/>
+      <FooterItem selected={false}>
+        <HiDownload />
         <FooterItemText>Downloads</FooterItemText>
       </FooterItem>
-      <FooterItem selected = {false}>
-        <BsList/>
+      <FooterItem selected={false}>
+        <BsList />
         <FooterItemText>More</FooterItemText>
       </FooterItem>
     </FooterWrapper>
   );
-}
+};
 
 export default Footer;
 
@@ -51,18 +50,18 @@ const FooterWrapper = styled.div`
 const FooterItem = styled.div<{ selected: boolean }>`
   cursor: pointer;
   color: ${(props) => (props.selected ? '#E0E0E0' : '#757575')};
-  font-size : 25px;
-  margin-top : 3px;
-  display : flex;
-  flex-direction : column;
-  align-items :center;
-  justify-content : center;
+  font-size: 25px;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   :hover {
     color: ${(props) => (props.selected ? '#E0E0E0' : '#BDBDBD')};
   }
 `;
 
 const FooterItemText = styled.p`
-  font-size : 10px;
-  margin-top : 0;
-`
+  font-size: 10px;
+  margin-top: 0;
+`;

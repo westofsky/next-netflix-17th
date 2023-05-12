@@ -37,7 +37,7 @@ export const Header = () => {
       </div>
     </HeaderWrapper>
   );
-}
+};
 
 export default Header;
 
