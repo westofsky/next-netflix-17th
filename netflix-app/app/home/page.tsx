@@ -10,8 +10,7 @@ import {
   fetchUpComing,
   fetchBanner,
 } from '@/assets/api/requests';
-import Header from '@/assets/components/Common/Header'
-import { useEffect } from 'react';
+import Header from '@/assets/components/Common/Header';
 
 async function getMovieData() {
   const getBannerData = await fetchBanner();

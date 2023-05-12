@@ -22,13 +22,13 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
             !isRoundRow ? (
               <RectangularMovie
                 key={movie.id}
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt={movie.name}
               />
             ) : (
               <WrapRoundMovie key={movie.id}>
                 <RoundMovie
-                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt={movie.name}
                 />
               </WrapRoundMovie>
@@ -58,14 +58,11 @@ const ArrowWrapper = styled.div`
   align-items: center;
 `;
 const ArrowLeft = styled.p`
-  position: absolute;
   font-size: 30px;
   color: white;
   cursor: pointer;
 `;
 const ArrowRight = styled.p`
-  position: absolute;
-  right: 38%;
   font-size: 30px;
   color: white;
   cursor: pointer;

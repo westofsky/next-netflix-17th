@@ -18,6 +18,7 @@ export default function StyledComponentsRegistry({
     styledComponentsStyleSheet.instance.clearTag();
     return <>{styles}</>;
   });
+  
   if (typeof window !== 'undefined') return <>{children}</>;
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
