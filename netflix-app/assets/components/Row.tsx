@@ -8,11 +8,14 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
       <Title>{title}</Title>
       <Slider>
         <ArrowWrapper>
-					<ArrowLeft
-						onClick={() => {
-							document.getElementById(id)!.scrollLeft -= window.innerWidth - 80;
-						}}
-					>{'<'}</ArrowLeft>
+          <ArrowLeft
+            onClick={() => {
+              document.getElementById(id)!.scrollLeft -=
+                window.innerWidth - 1300;
+            }}
+          >
+            {'<'}
+          </ArrowLeft>
         </ArrowWrapper>
         <Movie id={id}>
           {movies.map((movie: any) =>
@@ -33,11 +36,14 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
           )}
         </Movie>
         <ArrowWrapper>
-					<ArrowRight
-						onClick={() => {
-							document.getElementById(id)!.scrollLeft += window.innerWidth - 80;
-						}}
-					>{'>'}</ArrowRight>
+          <ArrowRight
+            onClick={() => {
+              document.getElementById(id)!.scrollLeft +=
+                window.innerWidth - 1300;
+            }}
+          >
+            {'>'}
+          </ArrowRight>
         </ArrowWrapper>
       </Slider>
     </Movies>
@@ -47,22 +53,28 @@ const Slider = styled.div`
   display: flex;
 `;
 const ArrowWrapper = styled.div`
-	padding-bottom : 25px;
-	display : flex;
-	align-items : center;
-`
+  padding-bottom: 25px;
+  display: flex;
+  align-items: center;
+  :hover {
+    height: 161px;
+    width: 30px;
+    background: rgba(20, 20, 20, 0.5);
+    transition: 300ms all ease-in-out;
+  }
+`;
 const ArrowLeft = styled.p`
-	position: absolute;
+  position: absolute;
   font-size: 30px;
   color: white;
-  cursor : pointer;
+  cursor: pointer;
 `;
 const ArrowRight = styled.p`
-	position: absolute;
-	right : 38%;
+  position: absolute;
+  right: 38%;
   font-size: 30px;
   color: white;
-  cursor : pointer;
+  cursor: pointer;
 `;
 const Movie = styled.div`
   width: 100%;
@@ -72,6 +84,7 @@ const Movie = styled.div`
     display: none;
   }
   margin: 5px 0 25px 0;
+  scroll-behavior: smooth;
 `;
 const Title = styled.div`
   width: 150px;
@@ -94,6 +107,7 @@ const RectangularMovie = styled.img`
   width: 103px;
   height: 161px;
   border-radius: 4px;
+  cursor: pointer;
 `;
 const RoundMovie = styled.img`
   margin-right: 7px;
@@ -101,6 +115,7 @@ const RoundMovie = styled.img`
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 `;
 const WrapRoundMovie = styled.div`
   width: 100px;
