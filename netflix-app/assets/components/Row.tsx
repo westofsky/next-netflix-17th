@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import instance from './../api/axios';
 import styled from 'styled-components';
 
-export const Row = ({ title, id, isRoundRow, fetchUrl, upComingData }: any) => {
+export const Row = ({ title, id, isRoundRow, fetchUrl, movies }: any) => {
   // const [movies, setMovie] = useState([] as any);
 
   // useEffect(() => {
@@ -20,7 +20,7 @@ export const Row = ({ title, id, isRoundRow, fetchUrl, upComingData }: any) => {
     <Movies>
       <Title>{title}</Title>
       <Movie id={id}>
-        {upComingData.map(
+        {movies.map(
           (
             movie: any //여기서 upComingData 배열이 안 먹히는 중
           ) =>

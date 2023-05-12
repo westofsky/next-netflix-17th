@@ -10,7 +10,8 @@ export default function RooteLayout({
   return (
     <html>
       <body className = "w375 h746 ma">
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        {/* <ReactQueryProvider>{children}</ReactQueryProvider> */}
+        {children}
       </body>
     </html>
   );

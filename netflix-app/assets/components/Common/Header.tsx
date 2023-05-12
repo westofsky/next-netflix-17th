@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
-function Header() {
+export const Header = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {

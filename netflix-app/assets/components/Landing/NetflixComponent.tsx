@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 import animationData from './NetflixLogo.json';
 
-function NetflixComponent() {
+export const NetflixComponent = () => {
   const router = useRouter();
   const handleOnComplete = () => {
     router.push('/pages/');

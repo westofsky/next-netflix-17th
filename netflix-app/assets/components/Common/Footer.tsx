@@ -5,7 +5,7 @@ import {MdOutlineVideoLibrary} from 'react-icons/md';
 import {HiDownload} from 'react-icons/hi';
 import {BsList} from 'react-icons/bs';
 
-function Footer() {
+export const Footer = () => {
 
   return (
     <FooterWrapper>
