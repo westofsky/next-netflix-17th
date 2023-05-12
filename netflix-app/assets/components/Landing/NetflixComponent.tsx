@@ -8,7 +8,7 @@ export const NetflixComponent = () => {
   const router = useRouter();
 	useEffect( () => {
 		const goPage = setTimeout(() => {
-			router.push('/pages');
+			router.push('/home');
 		}, 3800);
 	
 	},[])

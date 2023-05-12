@@ -56,22 +56,13 @@ const ArrowWrapper = styled.div`
   padding-bottom: 25px;
   display: flex;
   align-items: center;
-  :hover {
-    height: 161px;
-    width: 30px;
-    background: rgba(20, 20, 20, 0.5);
-    transition: 300ms all ease-in-out;
-  }
 `;
 const ArrowLeft = styled.p`
-  position: absolute;
   font-size: 30px;
   color: white;
   cursor: pointer;
 `;
 const ArrowRight = styled.p`
-  position: absolute;
-  right: 38%;
   font-size: 30px;
   color: white;
   cursor: pointer;
