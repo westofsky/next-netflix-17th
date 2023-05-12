@@ -58,11 +58,14 @@ const ArrowWrapper = styled.div`
   align-items: center;
 `;
 const ArrowLeft = styled.p`
+  position: absolute;
   font-size: 30px;
   color: white;
   cursor: pointer;
 `;
 const ArrowRight = styled.p`
+  position: absolute;
+  right: 38%;
   font-size: 30px;
   color: white;
   cursor: pointer;
