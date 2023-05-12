@@ -5,14 +5,13 @@ export async function fetchBanner() {
   const nowPlayingRes = await (
     await fetch(
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
-      { cache: 'no-store' }
+      { cache: 'force-cache' }
     )
   ).json();
   const nowPlayingData = nowPlayingRes.results;
   const nowPlayingDataBackDrop =
-    nowPlayingData[Math.floor(Math.random() * nowPlayingData.length)]
-      .backdrop_path;
-  return 'https://image.tmdb.org/t/p/original/' + nowPlayingDataBackDrop;
+    nowPlayingData[Math.floor(Math.random() * nowPlayingData.length)];
+  return nowPlayingDataBackDrop;
 }
 
 export async function fetchUpComing() {
@@ -27,7 +26,7 @@ export async function fetchNowPlaying() {
   const nowPlayingRes = await (
     await fetch(
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
-      { cache: 'no-store' }
+      { cache: 'force-cache' }
     )
   ).json();
   const nowPlayingData = nowPlayingRes.results;
@@ -38,7 +37,7 @@ export async function fetchTopRated() {
   const topRatedRes = await (
     await fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`,
-      { cache: 'no-store' }
+      { cache: 'force-cache' }
     )
   ).json();
   const topRatedData = topRatedRes.results;
@@ -49,7 +48,7 @@ export async function fetchPopular() {
   const popularRes = await (
     await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
-      { cache: 'no-store' }
+      { cache: 'force-cache' }
     )
   ).json();
   const popularData = popularRes.results;

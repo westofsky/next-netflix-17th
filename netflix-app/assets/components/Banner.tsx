@@ -4,13 +4,9 @@ import styled from 'styled-components';
 
 export const Banner = ({ fetchUrl }: any) => {
   return (
-    <Header
-      style={{
-        backgroundImage: `url(${fetchUrl})`,
-        backgroundPosition: 'top center',
-        backgroundSize: 'cover',
-      }}
-    ></Header>
+    <Header>
+      <BackImg src = {`https://image.tmdb.org/t/p/original/${fetchUrl.poster_path}`}/>
+		</Header>
   );
 };
 
@@ -25,3 +21,9 @@ const Header = styled.div`
     #000000 100%
   );
 `;
+
+const BackImg = styled.img`
+	width: 375px;
+	height: 415px;
+	
+`
