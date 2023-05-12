@@ -3,38 +3,41 @@ import React, { useEffect, useState } from 'react';
 import instance from './../api/axios';
 import styled from 'styled-components';
 
-export const Row = ({ title, id, isRoundRow, fetchUrl }: any) => {
-  const [movies, setMovie] = useState([] as any);
+export const Row = ({ title, id, isRoundRow, fetchUrl, upComingData }: any) => {
+  // const [movies, setMovie] = useState([] as any);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    // 해당 url의 영화들 가져오기
-    const { results } = await (await fetch(fetchUrl)).json();
-    setMovie(results);
-  };
+  // const fetchData = async () => {
+  //   // 해당 url의 영화들 가져오기
+  //   const { results } = await (await fetch(fetchUrl)).json();
+  //   setMovie(results);
+  // };
 
   return (
     <Movies>
       <Title>{title}</Title>
       <Movie id={id}>
-        {movies.map((movie: any) =>
-          !isRoundRow ? (
-            <RectangularMovie
-              key={movie.id}
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt={movie.name}
-            />
-          ) : (
-            <WrapRoundMovie key={movie.id}>
-              <RoundMovie
+        {upComingData.map(
+          (
+            movie: any //여기서 upComingData 배열이 안 먹히는 중
+          ) =>
+            !isRoundRow ? (
+              <RectangularMovie
+                key={movie.id}
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={movie.name}
               />
-            </WrapRoundMovie>
-          )
+            ) : (
+              <WrapRoundMovie key={movie.id}>
+                <RoundMovie
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  alt={movie.name}
+                />
+              </WrapRoundMovie>
+            )
         )}
       </Movie>
     </Movies>

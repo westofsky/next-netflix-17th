@@ -18,7 +18,7 @@ export const Banner = ({ fetchUrl }: any) => {
     const movieId = results[Math.floor(Math.random() * results.length)].id;
 
     // 특정 영화의 상세 정보를 가져오기(비디오 정보 포함)
-    const { data: movieDetail } = await instance.get(`movie/${movieId}`, {
+    const { data: movieDetail } = await instance.get(`${movieId}`, {
       params: { append_to_response: 'videos' },
     });
     setMovie(movieDetail);
