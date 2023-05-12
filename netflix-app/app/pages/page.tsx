@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Banner } from '../../assets/components/Banner';
 import { Button } from '../../assets/components/Button';
 import { Row } from '../../assets/components/Row';
-import { fetchUpComing } from './../../assets/api/requests';
+import { fetchNowPlaying, fetchPopular, fetchTopRated, fetchUpComing,fetchBanner } from './../../assets/api/requests';
 import { useQuery } from '@tanstack/react-query';
 import Header from '@/assets/components/Common/Header';
 import { GetServerSideProps } from 'next';
@@ -12,36 +12,18 @@ const API_KEY = '4a87076c7a6bfe146f57401604176096';
 import { InferGetServerSidePropsType } from 'next';
 
 export async function getMovieData() {
-  const upComingRes = await (
-    await fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}`,
-      { cache: 'no-store' }
-    )
-  ).json();
-  const upComingData = upComingRes.results;
 	
-	const nowPlayingRes = await (
-    await fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
-      { cache: 'no-store' }
-    )
-  ).json();
-  const nowPlayingData = nowPlayingRes.results;
-	const topRatedRes = await (
-    await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`,
-      { cache: 'no-store' }
-    )
-  ).json();
-  const topRatedData = topRatedRes.results;
-	const popularRes = await (
-    await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
-      { cache: 'no-store' }
-    )
-  ).json();
-  const popularData = popularRes.results;
+	const getBannerData = await fetchBanner();
+  const upComingData = await fetchUpComing();
+
+	const nowPlayingData = await fetchNowPlaying();
+	
+	const topRatedData = await fetchTopRated();
+	
+	const popularData = await fetchPopular();
+	
 	return {
+		getBannerData,
 		upComingData,
 		nowPlayingData,
 		topRatedData,
@@ -68,7 +50,7 @@ export default async function main() {
     <Container>
       <Header />
       <Banner
-        fetchUrl={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`}
+        fetchUrl={movies.getBannerData}
       />
       <Button />
       <Rows>
