@@ -1,6 +1,5 @@
-'use client';
 import './globals.css';
-
+import StyledComponentsRegistry from '@/assets/lib/registry';
 export default function RooteLayout({
   children,
 }: {
@@ -8,7 +7,7 @@ export default function RooteLayout({
 }) {
   return (
     <html>
-      <body className="w375 h746 ma">{children}</body>
+      <body className="w375 h746 ma"><StyledComponentsRegistry>{children}</StyledComponentsRegistry></body>
     </html>
   );
 }
