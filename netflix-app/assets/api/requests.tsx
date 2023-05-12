@@ -1,10 +1,7 @@
-const API_KEY = '4a87076c7a6bfe146f57401604176096';
-const API_URL = 'https://api.themoviedb.org/3/movie/';
-
 export async function fetchBanner() {
   const nowPlayingRes = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       { cache: 'force-cache' }
     )
   ).json();
@@ -16,7 +13,10 @@ export async function fetchBanner() {
 
 export async function fetchUpComing() {
   const upComingRes = await (
-    await fetch(`${API_URL}upcoming?api_key=${API_KEY}`, { cache: 'no-store' })
+    await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+      { cache: 'no-store' }
+    )
   ).json();
   const upComingData = upComingRes.results;
   return upComingData;
@@ -25,7 +25,7 @@ export async function fetchUpComing() {
 export async function fetchNowPlaying() {
   const nowPlayingRes = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       { cache: 'force-cache' }
     )
   ).json();
@@ -36,7 +36,7 @@ export async function fetchNowPlaying() {
 export async function fetchTopRated() {
   const topRatedRes = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`,
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       { cache: 'force-cache' }
     )
   ).json();
@@ -47,7 +47,7 @@ export async function fetchTopRated() {
 export async function fetchPopular() {
   const popularRes = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       { cache: 'force-cache' }
     )
   ).json();
