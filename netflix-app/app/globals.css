@@ -1,5 +1,6 @@
 html {
 	-ms-overflow-style: none;
+    height:100%;
 }
 
 ::-webkit-scrollbar {
@@ -7,6 +8,7 @@ html {
 }
 body {
 	background-color : black;
+    height:100%;
 }
 
 .w375 {
