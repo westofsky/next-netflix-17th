@@ -1,5 +1,12 @@
+html {
+	-ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+ display: none;
+}
 body {
-  background-color : black;
+	background-color : black;
 }
 
 .w375 {
