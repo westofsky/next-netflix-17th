@@ -35,6 +35,8 @@
   },
   "packageManager": "yarn@3.5.1",
   "devDependencies": {
+    "@babel/parser": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
     "@yarnpkg/sdks": "^3.0.0-rc.43",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",

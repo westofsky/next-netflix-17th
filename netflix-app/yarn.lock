@@ -1263,7 +1263,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:^7.20.2":
+"@babel/preset-env@npm:^7.20.2, @babel/preset-env@npm:^7.21.5":
   version: 7.21.5
   resolution: "@babel/preset-env@npm:7.21.5"
   dependencies:
@@ -5113,6 +5113,8 @@ __metadata:
   resolution: "netflix-app@workspace:."
   dependencies:
     "@babel/eslint-parser": ^7.21.8
+    "@babel/parser": ^7.21.8
+    "@babel/preset-env": ^7.21.5
     "@tanstack/react-query": ^4.29.5
     "@tanstack/react-query-devtools": ^4.29.6
     "@types/node": 20.1.1
