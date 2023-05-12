@@ -7,13 +7,13 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
     <Movies>
       <Title>{title}</Title>
       <Slider>
-        <Arrow
-          onClick={() => {
-            document.getElementById(id).scrollLeft -= window.innerWidth - 80;
-          }}
-        >
-          {'<'}
-        </Arrow>
+        <ArrowWrapper>
+					<ArrowLeft
+						onClick={() => {
+							document.getElementById(id)!.scrollLeft -= window.innerWidth - 80;
+						}}
+					>{'<'}</ArrowLeft>
+        </ArrowWrapper>
         <Movie id={id}>
           {movies.map((movie: any) =>
             !isRoundRow ? (
@@ -32,13 +32,13 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
             )
           )}
         </Movie>
-        <Arrow
-          onClick={() => {
-            document.getElementById(id).scrollLeft += window.innerWidth - 80;
-          }}
-        >
-          {'>'}
-        </Arrow>
+        <ArrowWrapper>
+					<ArrowRight
+						onClick={() => {
+							document.getElementById(id)!.scrollLeft += window.innerWidth - 80;
+						}}
+					>{'>'}</ArrowRight>
+        </ArrowWrapper>
       </Slider>
     </Movies>
   );
@@ -46,11 +46,23 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
 const Slider = styled.div`
   display: flex;
 `;
-const Arrow = styled.div`
+const ArrowWrapper = styled.div`
+	padding-bottom : 25px;
+	display : flex;
+	align-items : center;
+`
+const ArrowLeft = styled.p`
+	position: absolute;
   font-size: 30px;
   color: white;
-  // z-index: 1;
-  // position: fixed;
+  cursor : pointer;
+`;
+const ArrowRight = styled.p`
+	position: absolute;
+	right : 38%;
+  font-size: 30px;
+  color: white;
+  cursor : pointer;
 `;
 const Movie = styled.div`
   width: 100%;
@@ -93,5 +105,5 @@ const RoundMovie = styled.img`
 const WrapRoundMovie = styled.div`
   width: 100px;
   height: 100px;
-  margin-right: 4px;
+  margin: 0 0 4px 5px;
 `;

@@ -18,9 +18,9 @@ export default function StyledComponentsRegistry({
     styledComponentsStyleSheet.instance.clearTag();
     return <>{styles}</>;
   });
- 
+	const windowStore = window;
   if (typeof window !== 'undefined') return <>{children}</>;
- 
+  window = windowStore;
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
       {children}
