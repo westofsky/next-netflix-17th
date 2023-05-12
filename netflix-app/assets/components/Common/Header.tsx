@@ -25,13 +25,13 @@ export const Header = () => {
         <LogoLink href={'/'}>
           <LogoWrapper src={`/netflix_trans.png`}></LogoWrapper>
         </LogoLink>
-        <LogoLink href={'/pages'}>
+        <LogoLink href={'/home'}>
           <HeaderMenu>TV Shows</HeaderMenu>
         </LogoLink>
-        <LogoLink href={'/pages'}>
+        <LogoLink href={'/home'}>
           <HeaderMenu>Movies</HeaderMenu>
         </LogoLink>
-        <LogoLink href={'/pages'}>
+        <LogoLink href={'/home'}>
           <HeaderMenu>My List</HeaderMenu>
         </LogoLink>
       </div>
