@@ -14,9 +14,9 @@ export default function app() {
 
 const Wrapper = styled.div`
   background-color: black;
-  display:flex;
-  align-items : center;
-  height:100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
 `;
 
 const WrapLanding = styled.div`

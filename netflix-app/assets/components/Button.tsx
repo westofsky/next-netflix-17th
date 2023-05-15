@@ -83,12 +83,12 @@ const MyListButton = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-	cursor : pointer;
+  cursor: pointer;
   .text {
     width: 60px;
     height: 20px;
-		user-select : none;
-		cursor : pointer;
+    user-select: none;
+    cursor: pointer;
 
     font-family: 'SF Pro Display';
     font-style: normal;
@@ -110,14 +110,14 @@ const PlayButton = styled.div`
   align-items: center;
   padding-left: 19px;
   margin: 0 45px 0 40px;
-	cursor : pointer;
+  cursor: pointer;
 
   .text {
     width: 39px;
     height: 30px;
     padding-left: 15px;
-		user-select : none;
-		cursor : pointer;
+    user-select: none;
+    cursor: pointer;
 
     font-family: 'SF Pro Display';
     font-style: normal;
@@ -129,12 +129,12 @@ const PlayButton = styled.div`
   }
 `;
 const InfoButton = styled.div`
-	cursor : pointer;
+  cursor: pointer;
   .text {
     width: 22px;
     height: 20px;
-		user-select : none;
-		cursor : pointer;
+    user-select: none;
+    cursor: pointer;
 
     font-family: 'SF Pro Display';
     font-style: normal;
