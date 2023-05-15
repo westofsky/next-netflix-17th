@@ -6,7 +6,7 @@ export const Banner = ({ fetchUrl }: any) => {
   return (
     <Header>
       <BackImg
-        src={`https://image.tmdb.org/t/p/original${fetchUrl.poster_path}`}
+        src={`https://image.tmdb.org/t/p/original${fetchUrl[1].poster_path}`}
       />
     </Header>
   );

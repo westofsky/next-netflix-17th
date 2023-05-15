@@ -1,16 +1,3 @@
-export async function fetchBanner() {
-  const nowPlayingRes = await (
-    await fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
-      { cache: 'force-cache' }
-    )
-  ).json();
-  const nowPlayingData = nowPlayingRes.results;
-  const nowPlayingDataBackDrop =
-    nowPlayingData[Math.floor(Math.random() * nowPlayingData.length)];
-  return nowPlayingDataBackDrop;
-}
-
 export async function fetchUpComing() {
   const upComingRes = await (
     await fetch(
@@ -19,7 +6,7 @@ export async function fetchUpComing() {
     )
   ).json();
   const upComingData = upComingRes.results;
-  return upComingData;
+  return [upComingData];
 }
 
 export async function fetchNowPlaying() {
@@ -30,7 +17,9 @@ export async function fetchNowPlaying() {
     )
   ).json();
   const nowPlayingData = nowPlayingRes.results;
-  return nowPlayingData;
+  const nowPlayingDataBackDrop =
+    nowPlayingData[Math.floor(Math.random() * nowPlayingData.length)];
+  return [nowPlayingData, nowPlayingDataBackDrop];
 }
 
 export async function fetchTopRated() {
@@ -41,7 +30,7 @@ export async function fetchTopRated() {
     )
   ).json();
   const topRatedData = topRatedRes.results;
-  return topRatedData;
+  return [topRatedData];
 }
 
 export async function fetchPopular() {
@@ -52,5 +41,5 @@ export async function fetchPopular() {
     )
   ).json();
   const popularData = popularRes.results;
-  return popularData;
+  return [popularData];
 }

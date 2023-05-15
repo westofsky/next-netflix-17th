@@ -17,7 +17,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
           </ArrowLeft>
         </ArrowWrapper>
         <Movie id={id}>
-          {movies.map((movie: any) =>
+          {movies[0].map((movie: any) =>
             !isRoundRow ? (
               <RectangularMovie
                 key={movie.id}
