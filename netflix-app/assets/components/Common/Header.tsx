@@ -50,8 +50,7 @@ const HeaderWrapper = styled.div`
     align-items: center;
     justify-content: space-around;
     position: fixed;
-    transition-timing-function: ease-in;
-    transition: all 0.5s;
+    transition: all 0.5s ease-in;
   }
   .nav_black {
     background-color: #111;

@@ -12,7 +12,7 @@ export async function fetchUpComing() {
 export async function fetchNowPlaying() {
   const nowPlayingRes = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+      `${process.env.NEXT_PUBLIC_API_URL}now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       { cache: 'force-cache' }
     )
   ).json();
@@ -25,7 +25,7 @@ export async function fetchNowPlaying() {
 export async function fetchTopRated() {
   const topRatedRes = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+      `${process.env.NEXT_PUBLIC_API_URL}top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       { cache: 'force-cache' }
     )
   ).json();
@@ -36,7 +36,7 @@ export async function fetchTopRated() {
 export async function fetchPopular() {
   const popularRes = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+      `${process.env.NEXT_PUBLIC_API_URL}popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       { cache: 'force-cache' }
     )
   ).json();
