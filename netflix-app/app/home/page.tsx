@@ -8,7 +8,6 @@ import {
   fetchPopular,
   fetchTopRated,
   fetchUpComing,
-  //fetchBanner,
 } from '@/assets/api/requests';
 import Header from '@/assets/components/Common/Header';
 
