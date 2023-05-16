@@ -1,15 +1,43 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { fetchSearch } from '@/assets/api/requests';
 
-function SearchForm() {
-  const [text, setText] = useState('');
+async function getSearchData(e: string) {
+  const getSearchData = await fetchSearch(e);
+
+  return {
+    getSearchData,
+  };
+}
+
+export default async function SearchForm() {
+  const [text, setText] = useState('' as any);
+  const [searched, setSearched] = useState([] as any);
+
+  useEffect(() => {
+    const searchMovies = async (text: any) => {
+      const s = await getSearchData(text);
+      setSearched(s.getSearchData);
+      if (text === '') {
+        setSearched(undefined);
+      }
+    };
+
+    searchMovies(text);
+    console.log(searched);
+  }, [text, setText, searched]);
+
+  const handleClear = () => {
+    setText('');
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
+
   return (
-    <Search>
-      <svg
+    <Container>
+      <svg //svg는 따로 정리할 예정
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -27,6 +55,30 @@ function SearchForm() {
         placeholder="Search for a movie"
       ></SearchBox>
 
+      <SearchedMovies>
+        {searched === undefined ? (
+          <S>
+            {searched
+              .filter((input: any) =>
+                input.title.toLowerCase().includes(text.toLocaleLowerCase())
+              )
+              .map((movie: any) => (
+                <Movies key={movie.id}>{movie.id}</Movies> //일단 movie.id 찍어봄
+              ))}
+          </S>
+        ) : (
+          <S>
+            {searched
+              .filter((input: any) =>
+                input.title.toLowerCase().includes(text.toLocaleLowerCase())
+              )
+              .map((movie: any) => (
+                <Movies key={movie.id}>{movie.id}</Movies> //일단 movie.id 찍어봄
+              ))}
+          </S>
+        )}
+      </SearchedMovies>
+
       <svg
         width="15"
         height="15"
@@ -39,11 +91,15 @@ function SearchForm() {
           fill="#C4C4C4"
         />
       </svg>
-    </Search>
+    </Container>
   );
 }
 
-const Search = styled.div``;
+const S = styled.div``;
+const Movies = styled.div``;
+const SearchedMovies = styled.div``;
+
+const Container = styled.div``;
 
 const SearchBox = styled.input`
   width: 375px;
@@ -62,5 +118,3 @@ const SearchBox = styled.input`
 
   background: #424242;
 `;
-
-export default SearchForm;

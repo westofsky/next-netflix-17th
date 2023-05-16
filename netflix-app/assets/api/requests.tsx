@@ -43,3 +43,14 @@ export async function fetchPopular() {
   const popularData = popularRes.results;
   return [popularData];
 }
+
+export async function fetchSearch(e: string) {
+  const searchRes = await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&query=${e}`,
+      { cache: 'force-cache' }
+    )
+  ).json();
+  const searchData = searchRes.results;
+  return searchData;
+}
