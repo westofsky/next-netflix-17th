@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const Row = ({ title, id, isRoundRow, movies }: any) => {
   return (
@@ -19,18 +21,48 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <Movie id={id}>
           {movies[0].map((movie: any) =>
             !isRoundRow ? (
-              <RectangularMovie
+              <Link
                 key={movie.id}
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                alt={movie.name}
-              />
-            ) : (
-              <WrapRoundMovie key={movie.id}>
-                <RoundMovie
+                prefetch={false}
+                as={`/detail/${movie.title}`}
+                href={{
+                  pathname: `/detail/${movie.id}`,
+                  query: {
+                    image: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    ),
+                    preview: JSON.stringify(movie.overview),
+                  },
+                }}
+              >
+                <RectangularMovie
+                  key={movie.id}
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt={movie.name}
-                />
-              </WrapRoundMovie>
+                ></RectangularMovie>
+              </Link>
+            ) : (
+              <Link
+                key={movie.id}
+                prefetch={false}
+                as={`/detail/${movie.title}`}
+                href={{
+                  pathname: `/detail/${movie.id}`,
+                  query: {
+                    image: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    ),
+                    preview: JSON.stringify(movie.overview),
+                  },
+                }}
+              >
+                <WrapRoundMovie key={movie.id}>
+                  <RoundMovie
+                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                    alt={movie.name}
+                  />
+                </WrapRoundMovie>
+              </Link>
             )
           )}
         </Movie>
