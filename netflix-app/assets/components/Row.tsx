@@ -26,17 +26,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
             !isRoundRow ? (
               <Link
                 key={movie.id}
-                prefetch={false}
-                as={`/detail/${movie.title}`}
-                href={{
-                  pathname: `/detail/${movie.id}`,
-                  query: {
-                    image: JSON.stringify(
-                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                    ),
-                    preview: JSON.stringify(movie.overview),
-                  },
-                }}
+                href={`/detail/${movie.title}/${movie.poster_path}/${movie.overview}`}
               >
                 <RectangularMovie
                   key={movie.id}
@@ -47,17 +37,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
             ) : (
               <Link
                 key={movie.id}
-                prefetch={false}
-                as={`/detail/${movie.title}`}
-                href={{
-                  pathname: `/detail/${movie.id}`,
-                  query: {
-                    image: JSON.stringify(
-                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                    ),
-                    preview: JSON.stringify(movie.overview),
-                  },
-                }}
+                href={`/detail/${movie.title}/${movie.poster_path}/${movie.overview}`}
               >
                 <WrapRoundMovie key={movie.id}>
                   <RoundMovie
