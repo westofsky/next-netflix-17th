@@ -21,7 +21,6 @@ export const Button = () => {
             fill="white"
           />
         </svg>
-
         <div className="text">{'My List'}</div>
       </MyListButton>
       <PlayButton>
