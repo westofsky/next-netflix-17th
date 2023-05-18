@@ -8,12 +8,11 @@ import {
   fetchPopular,
   fetchTopRated,
   fetchUpComing,
-  fetchBanner,
 } from '@/assets/api/requests';
 import Header from '@/assets/components/Common/Header';
 
 async function getMovieData() {
-  const getBannerData = await fetchBanner();
+  const getBannerData = await fetchNowPlaying();
 
   const upComingData = await fetchUpComing();
 

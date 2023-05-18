@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
+//import { useRouter } from 'next/router';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 export const Row = ({ title, id, isRoundRow, movies }: any) => {
+  const router = useRouter();
+
   return (
     <Movies>
       <Title>{title}</Title>
@@ -17,20 +22,30 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
           </ArrowLeft>
         </ArrowWrapper>
         <Movie id={id}>
-          {movies.map((movie: any) =>
+          {movies[0].map((movie: any) =>
             !isRoundRow ? (
-              <RectangularMovie
+              <Link
                 key={movie.id}
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                alt={movie.name}
-              />
-            ) : (
-              <WrapRoundMovie key={movie.id}>
-                <RoundMovie
+                href={`/detail/${movie.title}/${movie.poster_path}/${movie.overview}`}
+              >
+                <RectangularMovie
+                  key={movie.id}
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt={movie.name}
-                />
-              </WrapRoundMovie>
+                ></RectangularMovie>
+              </Link>
+            ) : (
+              <Link
+                key={movie.id}
+                href={`/detail/${movie.title}/${movie.poster_path}/${movie.overview}`}
+              >
+                <WrapRoundMovie key={movie.id}>
+                  <RoundMovie
+                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                    alt={movie.name}
+                  />
+                </WrapRoundMovie>
+              </Link>
             )
           )}
         </Movie>
