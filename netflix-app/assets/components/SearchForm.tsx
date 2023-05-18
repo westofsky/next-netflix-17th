@@ -1,39 +1,5 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { fetchSearch } from '@/assets/api/requests';
-
-async function getSearchData(e: string) {
-  const getSearchData = await fetchSearch(e);
-
-  return {
-    getSearchData,
-  };
-}
-
-export default async function SearchForm() {
-  const [text, setText] = useState('' as any);
-  const [searched, setSearched] = useState([] as any);
-
-  useEffect(() => {
-    const searchMovies = async (text: any) => {
-      const s = await getSearchData(text);
-      setSearched(s.getSearchData);
-      if (text === '') {
-        setSearched(undefined);
-      }
-    };
-
-    searchMovies(text);
-    console.log(searched);
-  }, [text, setText, searched]);
-
-  const handleClear = () => {
-    setText('');
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
-  };
+export default async function SearchForm({handleChange} : any) {
 
   return (
     <Container>
@@ -54,30 +20,6 @@ export default async function SearchForm() {
         onChange={handleChange}
         placeholder="Search for a movie"
       ></SearchBox>
-
-      <SearchedMovies>
-        {searched === undefined ? (
-          <S>
-            {searched
-              .filter((input: any) =>
-                input.title.toLowerCase().includes(text.toLocaleLowerCase())
-              )
-              .map((movie: any) => (
-                <Movies key={movie.id}>{movie.id}</Movies> //일단 movie.id 찍어봄
-              ))}
-          </S>
-        ) : (
-          <S>
-            {searched
-              .filter((input: any) =>
-                input.title.toLowerCase().includes(text.toLocaleLowerCase())
-              )
-              .map((movie: any) => (
-                <Movies key={movie.id}>{movie.id}</Movies> //일단 movie.id 찍어봄
-              ))}
-          </S>
-        )}
-      </SearchedMovies>
 
       <svg
         width="15"
