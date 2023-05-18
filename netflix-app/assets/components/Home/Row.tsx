@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-//import { useRouter } from 'next/router';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export const Row = ({ title, id, isRoundRow, movies }: any) => {
   const router = useRouter();
@@ -14,7 +13,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <ArrowWrapper>
           <ArrowLeft
             onClick={() => {
-              document.getElementById(id)!.scrollLeft -=
+              document.getElementById(id)!.scrollLeft +=
                 window.innerWidth - 1300;
             }}
           >
@@ -46,7 +45,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <ArrowWrapper>
           <ArrowRight
             onClick={() => {
-              document.getElementById(id)!.scrollLeft +=
+              document.getElementById(id)!.scrollLeft -=
                 window.innerWidth - 1300;
             }}
           >
