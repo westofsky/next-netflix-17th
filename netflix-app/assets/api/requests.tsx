@@ -44,7 +44,7 @@ export async function fetchPopular() {
   return [popularData];
 }
 
-export async function fetchDetails(movie : string) {
+export async function fetchDetails(movie: string) {
   const movieDetailsRes = await (
     await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/movie/${movie}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
@@ -63,4 +63,14 @@ export async function fetchSearch(e: string) {
   ).json();
   const searchData = searchRes.results;
   return searchData;
+}
+
+export async function fetchVideos(movie: any) {
+  const movieVideosRes = await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/movie/${movie}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+      { cache: 'force-cache' }
+    )
+  ).json();
+  return movieVideosRes;
 }

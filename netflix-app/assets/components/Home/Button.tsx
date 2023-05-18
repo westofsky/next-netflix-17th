@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import listButton from '../Images/Button/list.svg';
 import playButton from '../Images/Button/play.svg';
 import infoButton from '../Images/Button/info.svg';
+import Link from 'next/link';
 
-export const Button = () => {
+export const Button = ({ fetchId }: any) => {
   return (
     <Container>
       <MyListButton>
@@ -12,8 +13,10 @@ export const Button = () => {
         <div className="text">{'My List'}</div>
       </MyListButton>
       <PlayButton>
-        <ButtonImage src={playButton.src} />
-        <div className="text">{'Play'}</div>
+        <Link key={fetchId} href={`/video/${fetchId}`}>
+          <ButtonImage src={playButton.src} />
+          <div className="text">{'Play'}</div>
+        </Link>
       </PlayButton>
       <InfoButton>
         <ButtonImage src={infoButton.src} />
