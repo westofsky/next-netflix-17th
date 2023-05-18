@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { BiHomeAlt2 } from 'react-icons/bi';
 import { FiSearch } from 'react-icons/fi';
 import { MdOutlineVideoLibrary } from 'react-icons/md';
@@ -76,6 +76,10 @@ const FooterWrapper = styled.div`
   background-color: #121212;
   margin: 0 auto;
 `;
+const FooterItemText = styled.p`
+  font-size: 10px;
+  margin-top: 0;
+`;
 
 const FooterItem = styled.div<{ selected: boolean }>`
   cursor: pointer;
@@ -86,12 +90,28 @@ const FooterItem = styled.div<{ selected: boolean }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  :hover {
-    color: ${(props) => (props.selected ? '#E0E0E0' : '#BDBDBD')};
+  &:hover {
+    color: #bdbdbd;
+    ${FooterItemText} {
+      color: #bdbdbd;
+    }
   }
+
+  ${(props) =>
+    props.selected &&
+    css`
+      color: #e0e0e0;
+
+      ${FooterItemText} {
+        color: #e0e0e0;
+      }
+
+      &:hover {
+        color: #e0e0e0;
+        ${FooterItemText} {
+          color: #e0e0e0;
+        }
+      }
+    `}
 `;
 
-const FooterItemText = styled.p`
-  font-size: 10px;
-  margin-top: 0;
-`;
