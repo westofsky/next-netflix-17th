@@ -3,7 +3,7 @@ import React, { use } from 'react';
 import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import playButton from './../../../assets/components/images/Button/play.svg';
+import playButton from '@/assets/components/images/Button/play.svg';
 import {
   fetchDetails,
 } from '@/assets/api/requests';
@@ -30,7 +30,7 @@ const DetailPage = ({
           src={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
         />
         <PlayButton>
-          <ButtonImage src={playButton} />
+          <ButtonImage src={playButton.src} />
           <div className="text">{'Play'}</div>
         </PlayButton>
         <Title>{movieDetail.getMovieDetail.title}</Title>
@@ -76,8 +76,6 @@ const PlayButton = styled.div`
   }
 `;
 const Title = styled.div`
-  width: 111px;
-  height: 20px;
   left: 32px;
   top: 505px;
 
@@ -85,7 +83,6 @@ const Title = styled.div`
   font-size: 26.7482px;
   line-height: 20px;
 
-  text-align: center;
   letter-spacing: -0.0733945px;
 
   color: #ffffff;

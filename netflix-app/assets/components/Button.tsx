@@ -28,11 +28,11 @@ export const Button = () => {
         <div className="text">{'My List'}</div>
       </MyListButton>
       <PlayButton>
-        <ButtonImage src={playButton} />
+        <ButtonImage src={playButton.src} />
         <div className="text">{'Play'}</div>
       </PlayButton>
       <InfoButton>
-        <ButtonImage src={infoButton} />
+        <ButtonImage src={infoButton.src} />
         <div className="text">{'Info'}</div>
       </InfoButton>
     </Container>
