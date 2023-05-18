@@ -30,6 +30,10 @@ const Container = styled.div`
   justify-content: center;
   height: 85px;
   margin-top: 15px;
+  :hover {
+    transform: scale(0.95);
+    transition: transform 0.35s;
+  }
 `;
 const MyListButton = styled.div`
   display: flex;

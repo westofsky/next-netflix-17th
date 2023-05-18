@@ -24,10 +24,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <Movie id={id}>
           {movies[0].map((movie: any) =>
             !isRoundRow ? (
-              <Link
-                key={movie.id}
-                href={`/detail/${movie.id}`}
-              >
+              <Link key={movie.id} href={`/detail/${movie.id}`}>
                 <RectangularMovie
                   key={movie.id}
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -35,10 +32,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
                 ></RectangularMovie>
               </Link>
             ) : (
-              <Link
-                key={movie.id}
-                href={`/detail/${movie.id}`}
-              >
+              <Link key={movie.id} href={`/detail/${movie.id}`}>
                 <WrapRoundMovie key={movie.id}>
                   <RoundMovie
                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -70,17 +64,17 @@ const ArrowWrapper = styled.div`
   padding-bottom: 25px;
   display: flex;
   align-items: center;
-`;
-const ArrowLeft = styled.p`
   font-size: 30px;
-  color: white;
   cursor: pointer;
+  color: #c4c4c4;
+  :hover {
+    transform: scale(1.25);
+    transition: transform 0.35s;
+    color: white;
+  }
 `;
-const ArrowRight = styled.p`
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-`;
+const ArrowLeft = styled.p``;
+const ArrowRight = styled.p``;
 const Movie = styled.div`
   width: 100%;
   display: flex;
@@ -90,6 +84,11 @@ const Movie = styled.div`
   }
   margin: 5px 0 25px 0;
   scroll-behavior: smooth;
+  :hover {
+    transform: scale(0.975);
+    transition: transform 0.35s;
+    color: white;
+  }
 `;
 const Title = styled.div`
   width: 150px;

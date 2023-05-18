@@ -36,10 +36,13 @@ const DetailPage = ({
             x
           </BackButton>
         </I>
-        <PlayButton>
-          <ButtonImage src={playButton.src} />
-          <div className="text">{'Play'}</div>
-        </PlayButton>
+        <S>
+          {/* 컴포넌트 명 다시 바꾸기 */}
+          <PlayButton>
+            <ButtonImage src={playButton.src} />
+            <div className="text">{'Play'}</div>
+          </PlayButton>
+        </S>
         <Title>{movieDetail.getMovieDetail.title}</Title>
         <Preview>{movieDetail.getMovieDetail.overview}</Preview>
       </Header>
@@ -47,6 +50,12 @@ const DetailPage = ({
   );
 };
 
+const S = styled.div`
+  :hover {
+    transform: scale(0.95);
+    transition: transform 0.35s;
+  }
+`;
 const I = styled.div`
   position: relative;
   display: flex;

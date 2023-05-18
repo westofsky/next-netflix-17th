@@ -15,16 +15,15 @@ export const Banner = ({ fetchUrl }: any) => {
 const Header = styled.div`
   width: 375px;
   height: 415px;
-
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0) 87.26%,
-    #000000 100%
-  );
 `;
 
 const BackImg = styled.img`
   width: 375px;
   height: 415px;
+  // background: linear-gradient( 이거 안 먹히는데?
+  //   180deg,
+  //   rgba(0, 0, 0, 0.45) 0%,
+  //   rgba(0, 0, 0, 0) 87.26%,
+  //   #000000 100%
+  // );
 `;

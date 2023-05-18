@@ -53,11 +53,15 @@ const HeaderWrapper = styled.div`
     transition: all 0.5s ease-in;
   }
   .nav_black {
-    background-color: #111;
+    background-color: black;
   }
 `;
 const LogoLink = styled(Link)`
   text-decoration: none;
+  :hover {
+    transform: scale(0.92);
+    transition: transform 0.35s;
+  }
 `;
 const HeaderMenu = styled.p`
   font-size: 17.2px;
