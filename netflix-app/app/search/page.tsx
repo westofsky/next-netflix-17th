@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Footer from '@/assets/components/Common/Footer';
-import SearchList from '@/assets/components/SearchList';
+import SearchList from '@/assets/components/Search/SearchList';
 import { fetchSearch, fetchTopRated } from '@/assets/api/requests';
 import { BiSearch, BiX } from 'react-icons/bi';
-import SearchResultText from '@/assets/components/SearchResultText';
+import SearchResultText from '@/assets/components/Search/SearchResultText';
 
 async function getSearchData(e: string) {
   const searchData = await fetchSearch(e);

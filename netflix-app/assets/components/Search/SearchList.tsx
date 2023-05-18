@@ -49,6 +49,7 @@ const MovieItem = styled.div`
 `;
 const WrapImage = styled.div`
 	margin-right : 10px;
+	height : 76px;
 `
 const MovieTitle = styled.p`
   color: white;

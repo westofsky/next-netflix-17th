@@ -2,7 +2,6 @@
 import React, { use } from 'react';
 import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import playButton from '@/assets/components/images/Button/play.svg';
 import { fetchDetails } from '@/assets/api/requests';
 

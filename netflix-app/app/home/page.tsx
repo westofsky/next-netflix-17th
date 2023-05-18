@@ -1,8 +1,8 @@
 'use client';
 import styled from 'styled-components';
-import { Banner } from '@/assets/components/Banner';
-import { Button } from '@/assets/components/Button';
-import { Row } from '@/assets/components/Row';
+import { Banner } from '@/assets/components/Home/Banner';
+import { Button } from '@/assets/components/Home/Button';
+import { Row } from '@/assets/components/Home/Row';
 import {
   fetchNowPlaying,
   fetchPopular,

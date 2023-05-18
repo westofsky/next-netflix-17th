@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import listButton from './images/Button/list.svg';
-import playButton from './images/Button/play.svg';
-import infoButton from './images/Button/info.svg';
-import path from 'path';
+import listButton from '../Images/Button/list.svg';
+import playButton from '../Images/Button/play.svg';
+import infoButton from '../Images/Button/info.svg';
 
 export const Button = () => {
   return (
