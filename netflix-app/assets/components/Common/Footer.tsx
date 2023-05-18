@@ -10,16 +10,16 @@ import { useState } from 'react';
 export const Footer = () => {
   const router = useRouter();
 
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState('home');
 
   return (
     <FooterWrapper>
       <FooterItem
         onClick={() => {
           router.push('/home');
-          setSelected(true); //이거 onClick 아니면 false로 바꿔줘야 하맨
+          setSelected('home'); //이거 onClick 아니면 false로 바꿔줘야 하맨
         }}
-        selected
+        selected = {selected ==='home' ? true : false}
       >
         <BiHomeAlt2 />
         <FooterItemText>Home</FooterItemText>
@@ -27,22 +27,34 @@ export const Footer = () => {
       <FooterItem
         onClick={() => {
           router.push('/search');
-          setSelected(true);
+          setSelected('search');
         }}
-        selected
+        selected = {selected ==='search' ? true : false}
       >
         <FiSearch />
         <FooterItemText>Search</FooterItemText>
       </FooterItem>
-      <FooterItem selected={false}>
+      <FooterItem 
+				onClick={() => {
+					setSelected('commingsoon');
+				}}
+        selected = {selected ==='commingsoon' ? true : false}>
         <MdOutlineVideoLibrary />
         <FooterItemText>Coming Soon</FooterItemText>
       </FooterItem>
-      <FooterItem selected={false}>
+      <FooterItem 
+				onClick={() => {
+					setSelected('donwloads');
+				}}
+        selected = {selected ==='donwloads' ? true : false}>
         <HiDownload />
         <FooterItemText>Downloads</FooterItemText>
       </FooterItem>
-      <FooterItem selected={false}>
+      <FooterItem 
+				onClick={() => {
+					setSelected('more');
+				}}
+        selected = {selected ==='more' ? true : false}>
         <BsList />
         <FooterItemText>More</FooterItemText>
       </FooterItem>
