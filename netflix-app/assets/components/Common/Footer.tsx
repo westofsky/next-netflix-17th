@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { BiHomeAlt2 } from 'react-icons/bi';
 import { FiSearch } from 'react-icons/fi';
 import { MdOutlineVideoLibrary } from 'react-icons/md';
@@ -10,16 +10,16 @@ import { useState } from 'react';
 export const Footer = () => {
   const router = useRouter();
 
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState('home');
 
   return (
     <FooterWrapper>
       <FooterItem
         onClick={() => {
           router.push('/home');
-          setSelected(true); //이거 onClick 아니면 false로 바꿔줘야 하맨
+          setSelected('home'); //이거 onClick 아니면 false로 바꿔줘야 하맨
         }}
-        selected
+        selected = {selected ==='home' ? true : false}
       >
         <BiHomeAlt2 />
         <FooterItemText>Home</FooterItemText>
@@ -27,22 +27,34 @@ export const Footer = () => {
       <FooterItem
         onClick={() => {
           router.push('/search');
-          setSelected(true);
+          setSelected('search');
         }}
-        selected
+        selected = {selected ==='search' ? true : false}
       >
         <FiSearch />
         <FooterItemText>Search</FooterItemText>
       </FooterItem>
-      <FooterItem selected={false}>
+      <FooterItem 
+				onClick={() => {
+					setSelected('commingsoon');
+				}}
+        selected = {selected ==='commingsoon' ? true : false}>
         <MdOutlineVideoLibrary />
         <FooterItemText>Coming Soon</FooterItemText>
       </FooterItem>
-      <FooterItem selected={false}>
+      <FooterItem 
+				onClick={() => {
+					setSelected('donwloads');
+				}}
+        selected = {selected ==='donwloads' ? true : false}>
         <HiDownload />
         <FooterItemText>Downloads</FooterItemText>
       </FooterItem>
-      <FooterItem selected={false}>
+      <FooterItem 
+				onClick={() => {
+					setSelected('more');
+				}}
+        selected = {selected ==='more' ? true : false}>
         <BsList />
         <FooterItemText>More</FooterItemText>
       </FooterItem>
@@ -64,6 +76,10 @@ const FooterWrapper = styled.div`
   background-color: #121212;
   margin: 0 auto;
 `;
+const FooterItemText = styled.p`
+  font-size: 10px;
+  margin-top: 0;
+`;
 
 const FooterItem = styled.div<{ selected: boolean }>`
   cursor: pointer;
@@ -74,12 +90,28 @@ const FooterItem = styled.div<{ selected: boolean }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  :hover {
-    color: ${(props) => (props.selected ? '#E0E0E0' : '#BDBDBD')};
+  &:hover {
+    color: #bdbdbd;
+    ${FooterItemText} {
+      color: #bdbdbd;
+    }
   }
+
+  ${(props) =>
+    props.selected &&
+    css`
+      color: #e0e0e0;
+
+      ${FooterItemText} {
+        color: #e0e0e0;
+      }
+
+      &:hover {
+        color: #e0e0e0;
+        ${FooterItemText} {
+          color: #e0e0e0;
+        }
+      }
+    `}
 `;
 
-const FooterItemText = styled.p`
-  font-size: 10px;
-  margin-top: 0;
-`;
