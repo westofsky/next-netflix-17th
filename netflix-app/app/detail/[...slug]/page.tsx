@@ -68,6 +68,7 @@ const BackButton = styled.button`
   background: none;
   color: white;
   font-size: 1.3rem;
+  cursor : pointer;
 `;
 const ButtonImage = styled.img``;
 const PlayButton = styled.div`
