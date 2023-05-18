@@ -4,14 +4,12 @@ import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import playButton from '@/assets/components/images/Button/play.svg';
-import {
-  fetchDetails,
-} from '@/assets/api/requests';
+import { fetchDetails } from '@/assets/api/requests';
 
-async function getMovieDetails(movieId : string) {
+async function getMovieDetails(movieId: string) {
   const getMovieDetail = await fetchDetails(movieId);
 
-  return {getMovieDetail};
+  return { getMovieDetail };
 }
 const DetailPage = ({
   params,
@@ -26,27 +24,42 @@ const DetailPage = ({
   return (
     <>
       <Header>
-        <BackImg
-          src={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
-        />
+        <I>
+          <BackImg
+            src={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
+          />
+          <BackButton
+            onClick={() => {
+              router.push('/home');
+            }}
+          >
+            x
+          </BackButton>
+        </I>
         <PlayButton>
           <ButtonImage src={playButton.src} />
           <div className="text">{'Play'}</div>
         </PlayButton>
         <Title>{movieDetail.getMovieDetail.title}</Title>
         <Preview>{movieDetail.getMovieDetail.overview}</Preview>
-        <BackButton
-          onClick={() => {
-            router.push('/home');
-          }}
-        >
-          x
-        </BackButton>
       </Header>
     </>
   );
 };
-const BackButton = styled.button``;
+
+const I = styled.div`
+  position: relative;
+  display: flex;
+`;
+const BackButton = styled.button`
+  position: absolute;
+  border: none;
+  top: 5%;
+  left: 90%;
+  background: none;
+  color: white;
+  font-size: 1.3rem;
+`;
 const ButtonImage = styled.img``;
 const PlayButton = styled.div`
   height: 45px;
@@ -78,10 +91,11 @@ const PlayButton = styled.div`
 const Title = styled.div`
   left: 32px;
   top: 505px;
+  height: 50px;
 
   font-weight: 700;
   font-size: 26.7482px;
-  line-height: 20px;
+  line-height: 30px;
 
   letter-spacing: -0.0733945px;
 
@@ -91,7 +105,6 @@ const Title = styled.div`
 const Header = styled.div`
   width: 375px;
   height: 415px;
-
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.45) 0%,
