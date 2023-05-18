@@ -44,6 +44,16 @@ export async function fetchPopular() {
   return [popularData];
 }
 
+export async function fetchDetails(movie : string) {
+  const movieDetailsRes = await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}${movie}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+      { cache: 'force-cache' }
+    )
+  ).json();
+  return movieDetailsRes;
+}
+
 export async function fetchSearch(e: string) {
   const searchRes = await (
     await fetch(

@@ -1,10 +1,18 @@
 'use client';
-import React from 'react';
+import React, { use } from 'react';
 import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import playButton from './../../../assets/components/images/Button/play.svg';
+import {
+  fetchDetails,
+} from '@/assets/api/requests';
 
+async function getMovieDetails(movieId : string) {
+  const getMovieDetail = await fetchDetails(movieId);
+
+  return {getMovieDetail};
+}
 const DetailPage = ({
   params,
   searchParams,
@@ -13,34 +21,20 @@ const DetailPage = ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const router = useRouter();
-  const pathName = usePathname();
 
-  const search_params = useSearchParams();
-
-  console.log('router', router);
-  console.log('pathName', pathName);
-  console.log('search_params', search_params);
-
-  console.log('params', params);
-
-  console.log('[0]', params.slug[0]);
-  console.log('[1]', params.slug[1]);
-  console.log('[2]', params.slug[2]);
-
-  console.log('searchParams', searchParams);
-
+  const movieDetail = use(getMovieDetails(params.slug[0]));
   return (
     <>
       <Header>
         <BackImg
-          src={`https://image.tmdb.org/t/p/original/${params.slug[1]}`}
+          src={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
         />
         <PlayButton>
           <ButtonImage src={playButton} />
           <div className="text">{'Play'}</div>
         </PlayButton>
-        <Title>Previews</Title>
-        <Preview>{params.slug[2]}</Preview>
+        <Title>{movieDetail.getMovieDetail.title}</Title>
+        <Preview>{movieDetail.getMovieDetail.overview}</Preview>
         <BackButton
           onClick={() => {
             router.push('/home');

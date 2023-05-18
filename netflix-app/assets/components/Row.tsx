@@ -6,7 +6,7 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 export const Row = ({ title, id, isRoundRow, movies }: any) => {
   const router = useRouter();
-
+  console.log(movies);
   return (
     <Movies>
       <Title>{title}</Title>
@@ -26,7 +26,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
             !isRoundRow ? (
               <Link
                 key={movie.id}
-                href={`/detail/${movie.title}/${movie.poster_path}/${movie.overview}`}
+                href={`/detail/${movie.id}`}
               >
                 <RectangularMovie
                   key={movie.id}
@@ -37,7 +37,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
             ) : (
               <Link
                 key={movie.id}
-                href={`/detail/${movie.title}/${movie.poster_path}/${movie.overview}`}
+                href={`/detail/${movie.id}`}
               >
                 <WrapRoundMovie key={movie.id}>
                   <RoundMovie
