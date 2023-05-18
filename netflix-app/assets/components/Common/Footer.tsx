@@ -16,8 +16,8 @@ export const Footer = () => {
     <FooterWrapper>
       <FooterItem
         onClick={() => {
+          setSelected('home');
           router.push('/home');
-          setSelected('home'); //이거 onClick 아니면 false로 바꿔줘야 하맨
         }}
         selected = {selected ==='home' ? true : false}
       >
@@ -26,8 +26,8 @@ export const Footer = () => {
       </FooterItem>
       <FooterItem
         onClick={() => {
+        	setSelected('search');
           router.push('/search');
-          setSelected('search');
         }}
         selected = {selected ==='search' ? true : false}
       >
