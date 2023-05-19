@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 async function getMovieData() {
   const tvShowsData = await fetchTvShows();
-
+  console.log(tvShowsData);
   return {
     tvShowsData,
   };
@@ -15,6 +15,7 @@ async function getMovieData() {
 
 export default async function HeaderMoviePage() {
   const tvShowsMovie = await getMovieData();
+  console.log(tvShowsMovie);
   return (
     <Container>
       <Title>{'Tv Shows'}</Title>
@@ -27,20 +28,13 @@ export default async function HeaderMoviePage() {
               height={76}
               alt={movie.name}
             />
-            <WrapTitle href={`/detail/${movie.id}`}>
-              <MovieTitle>{movie.name}</MovieTitle>
-            </WrapTitle>
+            <MovieTitle>{movie.name}</MovieTitle>
           </WrapMovie>
         ))}
       </Movies>
     </Container>
   );
 }
-const WrapTitle = styled(Link)`
-  cursor: pointer;
-  text-decoration-line: none;
-  margin-left: 10px;
-`;
 const WrapMovie = styled.div`
   display: flex;
   margin-bottom: 10px;
@@ -57,6 +51,7 @@ const MovieTitle = styled.p`
   overflow: hidden;
   white-space: nowrap;
   width: 180px;
+  margin-left: 10px;
 `;
 const Movies = styled.div`
   display: flex;
