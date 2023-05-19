@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Footer from '@/assets/components/Common/Footer';
 import SearchList from '@/assets/components/Search/SearchList';
 import { fetchSearch, fetchTopRated } from '@/assets/api/requests';
 import { BiSearch, BiX } from 'react-icons/bi';
@@ -21,6 +20,7 @@ export default function SearchPage() {
   const [searched, setSearched] = useState([] as any);
   const [inputText, setInputText] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+
   useEffect(() => {
     async function fetchData() {
       const topRatedData = await getTopRatedData();
@@ -28,12 +28,15 @@ export default function SearchPage() {
     }
     fetchData();
   }, []);
+
   useEffect(() => {
     if (inputText.length == 0) setIsSearching(false);
     else setIsSearching(true);
   }, [inputText]);
+
   const handleChange = async (e: { target: { value: any } }) => {
     setInputText(e.target.value);
+
     if (e.target.value === '') {
       const initialResults = await getTopRatedData();
       setSearched(initialResults[0]);
@@ -42,11 +45,13 @@ export default function SearchPage() {
       setSearched(searchResults);
     }
   };
+
   const handleDelete = () => {
     setInputText('');
   };
+
   return (
-    <>
+    <Contatiner>
       <SearchWrapper>
         <SearchInputWrapper>
           <ButtonWrapper>
@@ -66,7 +71,7 @@ export default function SearchPage() {
 
         <SearchList movies={searched} />
       </SearchWrapper>
-    </>
+    </Contatiner>
   );
 }
 const SearchWrapper = styled.div`
@@ -95,8 +100,8 @@ const SearchBox = styled.input`
   background: #424242;
   outline: none;
 `;
-
 const ButtonWrapper = styled.div`
   cursor: pointer;
   margin: 5px 12px 0 12px;
 `;
+const Contatiner = styled.div``;

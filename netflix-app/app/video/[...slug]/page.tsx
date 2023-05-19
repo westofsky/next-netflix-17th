@@ -2,7 +2,7 @@
 import React, { use, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { fetchVideos,fetchDetails } from '@/assets/api/requests';
+import { fetchVideos, fetchDetails } from '@/assets/api/requests';
 
 async function getMovieVideo(movieId: string) {
   const getVideo = await fetchVideos(movieId);
@@ -16,13 +16,7 @@ async function getMovieDetails(movieId: string) {
   return { getMovieDetail };
 }
 
-const DetailPage = ({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const DetailPage = ({ params }: { params: { slug: string } }) => {
   const router = useRouter();
   const [movieDetail, setMovieDetail] = useState([] as any);
   const [movieInfo, setMovieInfo] = useState(null as any);
@@ -45,11 +39,11 @@ const DetailPage = ({
   if (!movieInfo) {
     return <div>Loading...</div>;
   }
-  
+
   return (
-    <>
+    <Container>
       <Header>
-        <I>
+        <Button>
           <BackButton
             onClick={() => {
               router.push('/home');
@@ -57,33 +51,24 @@ const DetailPage = ({
           >
             x
           </BackButton>
-        </I>
+        </Button>
         <Iframe
           width="640"
           height="360"
           src={`https://www.youtube.com/embed/${movieKey}?controls=0&autoplay=1&loop=1&mute=1&playlist=${movieKey}`}
           title="YouTube video player"
-          //frameborder="0"
           allow="autoplay; fullscreen"
-          //allowfullscreen
         ></Iframe>
         <Title>{movieInfo.title}</Title>
         <Preview>{movieInfo.overview}</Preview>
       </Header>
-    </>
+    </Container>
   );
 };
+
 const Iframe = styled.iframe`
   width: 100%;
   height: 100%;
-`;
-const S = styled.div`
-  :hover {
-    transform: scale(0.95);
-    transition: transform 0.35s;
-  }
-`;
-const I = styled.div`
 `;
 const BackButton = styled.button`
   border: none;
@@ -92,35 +77,7 @@ const BackButton = styled.button`
   font-size: 1.5rem;
   cursor: pointer;
   float: right;
-  margin-bottom : 10px;
-`;
-const ButtonImage = styled.img``;
-const PlayButton = styled.div`
-  height: 45px;
-  background: #c4c4c4;
-  border-radius: 5.625px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 19px;
-  margin: 13px 36px 0 36px;
-  cursor: pointer;
-
-  .text {
-    width: 39px;
-    height: 30px;
-    padding-left: 15px;
-    user-select: none;
-    cursor: pointer;
-
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20.4624px;
-    line-height: 30px;
-
-    color: #000000;
-  }
+  margin-bottom: 10px;
 `;
 const Title = styled.div`
   left: 32px;
@@ -139,7 +96,7 @@ const Title = styled.div`
 const Header = styled.div`
   width: 375px;
   height: 415px;
-  padding-top : 10px;
+  padding-top: 10px;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.45) 0%,
@@ -147,12 +104,6 @@ const Header = styled.div`
     #000000 100%
   );
 `;
-
-const BackImg = styled.img`
-  width: 375px;
-  height: 415px;
-`;
-
 const Preview = styled.div`
   width: 311px;
   height: 43px;
@@ -166,5 +117,7 @@ const Preview = styled.div`
   color: rgba(255, 255, 255, 0.83);
   margin: 24px 32px 0 32px;
 `;
+const Button = styled.div``;
+const Container = styled.div``;
 
 export default DetailPage;
