@@ -5,7 +5,7 @@ export const Banner = ({ fetchUrl }: any) => {
   return (
     <Header>
       <BackImg
-        imageUrl={`https://image.tmdb.org/t/p/original${fetchUrl[1].poster_path}`}
+        imageurl={`https://image.tmdb.org/t/p/original${fetchUrl[1].poster_path}`}
       />
     </Header>
   );
@@ -16,7 +16,7 @@ const Header = styled.div`
   height: 415px;
 `;
 
-const BackImg = styled.div<{ imageUrl: string }>`
+const BackImg = styled.div<{ imageurl: string }>`
   width: 375px;
   height: 415px;
   background-image: linear-gradient(
@@ -24,7 +24,7 @@ const BackImg = styled.div<{ imageUrl: string }>`
     rgba(0, 0, 0, 0.45) 0%,
     rgba(0, 0, 0, 0) 87.26%,
     #000000 100%
-  ), url(${props => props.imageUrl});
+  ), url(${props => props.imageurl});
   background-size: cover;
   background-position: center;
 `;
