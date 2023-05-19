@@ -11,7 +11,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <ArrowWrapper>
           <ArrowLeft
             onClick={() => {
-              document.getElementById(id)!.scrollLeft -= 360;
+              document.getElementById(id)!.scrollLeft -= 315;
             }}
           >
             {'<'}
@@ -42,7 +42,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <ArrowWrapper>
           <ArrowRight
             onClick={() => {
-              document.getElementById(id)!.scrollLeft += 360;
+              document.getElementById(id)!.scrollLeft += 315;
             }}
           >
             {'>'}

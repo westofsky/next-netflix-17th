@@ -31,7 +31,7 @@ export default function SearchList({ movies }: any) {
             )}
           </WrapImage>
 
-          <WrapTitle key={movie.id} href={`/detail/${movie.id}`}>
+          <WrapTitle href={`/detail/${movie.id}`}>
             <MovieTitle>{movie.title}</MovieTitle>
           </WrapTitle>
           <WrapPlayButton key={movie.id} href={`/video/${movie.id}`}>
