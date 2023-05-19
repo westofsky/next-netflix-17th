@@ -37,6 +37,7 @@ export default function SearchPage() {
     if (inputText.length == 0) setIsSearching(false);
     else setIsSearching(true);
   }, [inputText]);
+  
   useEffect(() => {
     async function fetchData() {
       const topRatedData = await getTopRatedData(page);
