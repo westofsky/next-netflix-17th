@@ -40,10 +40,10 @@ export const Footer = () => {
           </FooterItem>
           <FooterItem
             onClick={() => {
-              setSelected('commingsoon');
+              setSelected('comming');
               router.push('/coming');
             }}
-            selected={selected === 'commingsoon' ? true : false}
+            selected={selected === 'comming' ? true : false}
           >
             <MdOutlineVideoLibrary />
             <FooterItemText>Coming Soon</FooterItemText>
