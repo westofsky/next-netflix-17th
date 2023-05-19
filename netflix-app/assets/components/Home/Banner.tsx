@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,7 +5,7 @@ export const Banner = ({ fetchUrl }: any) => {
   return (
     <Header>
       <BackImg
-        src={`https://image.tmdb.org/t/p/original${fetchUrl[1].poster_path}`}
+        imageUrl={`https://image.tmdb.org/t/p/original${fetchUrl[1].poster_path}`}
       />
     </Header>
   );
@@ -17,13 +16,15 @@ const Header = styled.div`
   height: 415px;
 `;
 
-const BackImg = styled.img`
+const BackImg = styled.div<{ imageUrl: string }>`
   width: 375px;
   height: 415px;
-  // background: linear-gradient( 이거 안 먹히는데?
-  //   180deg,
-  //   rgba(0, 0, 0, 0.45) 0%,
-  //   rgba(0, 0, 0, 0) 87.26%,
-  //   #000000 100%
-  // );
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0) 87.26%,
+    #000000 100%
+  ), url(${props => props.imageUrl});
+  background-size: cover;
+  background-position: center;
 `;
