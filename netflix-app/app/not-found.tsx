@@ -12,7 +12,7 @@ export default function NotFound() {
 
     setTimeout(() => {
       clearInterval(interval);
-      // window.location.replace('/');
+      window.location.replace('/');
     }, seconds * 1000);
 
     return () => {
@@ -29,7 +29,7 @@ export default function NotFound() {
               imageurl="/not_found.jpg"
             />
           </Poster>
-          <Title>{seconds}초후에 메인페이지로 이동합니다.</Title>
+          <Title>잘못된 페이지입니다 <br/>{seconds}초후에 메인페이지로 이동합니다.</Title>
         </Header>
       </Container>
     </>
