@@ -1,8 +1,7 @@
 'use client';
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import playButton from '@/assets/components/images/Button/play.svg';
 import { fetchVideos,fetchDetails } from '@/assets/api/requests';
 
 async function getMovieVideo(movieId: string) {
@@ -25,12 +24,27 @@ const DetailPage = ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const router = useRouter();
+  const [movieDetail, setMovieDetail] = useState([] as any);
+  const [movieInfo, setMovieInfo] = useState(null as any);
+  const [movieKey, setMovieKey] = useState('' as any);
 
-  const movieDetail = use(getMovieVideo(params.slug[0]));
-  const movieInfo = use(getMovieDetails(params.slug[0]));
+  useEffect(() => {
+    async function fetchInfo() {
+      const getMovieDetail = await getMovieVideo(params.slug[0]);
+      setMovieDetail(getMovieDetail);
+      setMovieKey(getMovieDetail.getVideo.results[0].key);
+    }
+    fetchInfo();
+    async function fetchData() {
+      const getMovieInfo = await getMovieDetails(params.slug[0]);
+      setMovieInfo(getMovieInfo.getMovieDetail);
+    }
+    fetchData();
+  }, []);
 
-  const h = movieDetail.getVideo.results[0].key;
-  
+  if (!movieInfo) {
+    return <div>Loading...</div>;
+  }
   
   return (
     <>
@@ -47,14 +61,14 @@ const DetailPage = ({
         <Iframe
           width="640"
           height="360"
-          src={`https://www.youtube.com/embed/${h}?controls=0&autoplay=1&loop=1&mute=1&playlist=${h}`}
+          src={`https://www.youtube.com/embed/${movieKey}?controls=0&autoplay=1&loop=1&mute=1&playlist=${movieKey}`}
           title="YouTube video player"
           //frameborder="0"
           allow="autoplay; fullscreen"
           //allowfullscreen
         ></Iframe>
-        <Title>{movieInfo.getMovieDetail.title}</Title>
-        <Preview>{movieInfo.getMovieDetail.overview}</Preview>
+        <Title>{movieInfo.title}</Title>
+        <Preview>{movieInfo.overview}</Preview>
       </Header>
     </>
   );
