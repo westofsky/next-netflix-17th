@@ -15,7 +15,6 @@ async function getMovieData() {
 
 export default async function ComingPage() {
   const comingMovie = await getMovieData();
-  console.log(comingMovie);
   return (
     <>
       <Title>{'Coming Soon'}</Title>

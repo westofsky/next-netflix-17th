@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function MovieCard({movieData} : any) {
+export default function TvShowCard({movieData} : any) {
+  console.log(movieData);
   return (
     <>
       <Movies>
@@ -14,10 +15,10 @@ export default function MovieCard({movieData} : any) {
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               width={146}
               height={76}
-              alt={movie.title}
+              alt={movie.name}
             />
             <WrapTitle href={`/detail/${movie.id}`}>
-              <MovieTitle>{movie.title}</MovieTitle>
+              <MovieTitle>{movie.name}</MovieTitle>
             </WrapTitle>
           </WrapMovie>
         ))}

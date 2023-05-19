@@ -2,11 +2,10 @@
 import React from 'react';
 import { fetchTvShows } from '@/assets/api/requests';
 import styled from 'styled-components';
-import MovieCard from '@/assets/components/Common/MovieCard';
+import TvShowCard from '@/assets/components/Common/TvShowCard';
 
 async function getMovieData() {
   const tvShowsData = await fetchTvShows();
-  console.log(tvShowsData);
   return {
     tvShowsData,
   };
@@ -14,11 +13,10 @@ async function getMovieData() {
 
 export default async function HeaderMoviePage() {
   const tvShowsMovie = await getMovieData();
-  console.log(tvShowsMovie);
   return (
     <Container>
       <Title>{'Tv Shows'}</Title>
-      <MovieCard movieData = {tvShowsMovie.tvShowsData[0].results} />
+      <TvShowCard movieData = {tvShowsMovie.tvShowsData[0].results} />
     </Container>
   );
 }
