@@ -14,6 +14,10 @@ export const NetflixComponent = () => {
   return (
     <Wrapper>
       <Lottie animationData={animationData} loop={false} />
+      <HiddenIFrame src="/silence.mp3" allow="autoplay" id="audio"></HiddenIFrame>
+      <HiddenAudio id="audio" autoPlay controls>
+        <source src="/netflix_intro.mp3" type="audio/mp3"/>
+      </HiddenAudio>
     </Wrapper>
   );
 };
@@ -21,5 +25,14 @@ export const NetflixComponent = () => {
 const Wrapper = styled.div`
   height: 372px;
 `;
-
+const HiddenIFrame = styled.iframe`
+  display : none;
+`
+const HiddenAudio = styled.audio`
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+`;
 export default NetflixComponent;
