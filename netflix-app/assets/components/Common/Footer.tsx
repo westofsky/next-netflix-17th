@@ -6,12 +6,18 @@ import { HiDownload } from 'react-icons/hi';
 import { BsList } from 'react-icons/bs';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { saveAs } from 'file-saver';
 
 export const Footer = () => {
   const router = useRouter();
   const pathname = usePathname();
   const isRoot = pathname === '/';
   const [selected, setSelected] = useState<string>('home');
+
+  const handleDownload = () => {
+    const blob = new Blob(["힝 속았지 ??????????"], { type: 'text/plain;charset=utf-8' });
+    saveAs(blob, 'hing.txt');
+  };
   return (
     <Container>
       {isRoot ? (
@@ -50,7 +56,7 @@ export const Footer = () => {
           </FooterItem>
           <FooterItem
             onClick={() => {
-              setSelected('donwloads');
+              handleDownload();
             }}
             selected={selected === 'donwloads' ? true : false}
           >

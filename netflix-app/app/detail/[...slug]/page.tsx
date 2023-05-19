@@ -30,9 +30,14 @@ const DetailPage: React.FC<DetailPageProps> = ({ params }) => {
     <Container>
       <Header>
         <Poster>
+          { getMovieDetail.poster_path !== undefined ? ( 
           <BackImg
             imageurl={`https://image.tmdb.org/t/p/original${getMovieDetail.poster_path}`}
-          />
+          />) : (
+          <BackImg
+            imageurl="/not_found.jpg"
+          />)}
+          
           <BackButton
             onClick={() => {
               router.push('/home');
@@ -41,6 +46,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ params }) => {
             x
           </BackButton>
         </Poster>
+        {getMovieDetail.id !== undefined ? (
         <Button>
           <PlayButton>
             <Link key={getMovieDetail.id} href={`/video/${getMovieDetail.id}`} className="link">
@@ -48,9 +54,12 @@ const DetailPage: React.FC<DetailPageProps> = ({ params }) => {
               <div className="text">{'Play'}</div>
             </Link>
           </PlayButton>
-        </Button>
+        </Button>) : ( <></>)}
+        {getMovieDetail.title !== undefined ? (
+          <>
         <Title>{getMovieDetail.title}</Title>
         <Preview>{getMovieDetail.overview}</Preview>
+        </>) : ( <AlertText>존재하지 않는 ID입니다.</AlertText>)}
       </Header>
     </Container>
   );
@@ -146,5 +155,13 @@ const Preview = styled.div`
 `;
 const ButtonImage = styled.img``;
 const Container = styled.div``;
+
+const AlertText = styled.p`
+  height: 50px;
+  font-weight: 700;
+  font-size: 23px;
+  color: #ffffff;
+  text-align : center;
+`;
 
 export default DetailPage;
