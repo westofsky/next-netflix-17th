@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import NetflixComponent from '@/assets/components/Landing/NetflixComponent';
 
 export default function app() {
-  console.log("AA");
   return (
     <Wrapper>
       <WrapLanding>

@@ -23,7 +23,6 @@ export default function SearchPage() {
   const [isSearching, setIsSearching] = useState(false);
   const [page, setPage] = useState(2);
   const [endRef, inView] = useInView();
-  console.log("T");
   useEffect(() => {
     async function fetchData() {
       const topRatedData = await getTopRatedData();
