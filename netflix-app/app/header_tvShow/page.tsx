@@ -20,7 +20,7 @@ export default async function HeaderMoviePage() {
       <Title>{'Tv Shows'}</Title>
       <Movies>
         {tvShowsMovie.tvShowsData[0].results.map((movie: any) => (
-          <WrapMovie>
+          <WrapMovie key={movie.key}>
             <Image
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               width={146}
@@ -62,6 +62,7 @@ const Movies = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 60px;
 `;
 const Container = styled.div``;
 const Title = styled.div`
