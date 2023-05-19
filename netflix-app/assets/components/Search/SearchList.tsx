@@ -4,6 +4,7 @@ import { BiPlayCircle } from 'react-icons/bi';
 import Link from 'next/link';
 
 export default function SearchList({ movies }: any) {
+  console.log("ASDF");
   return (
     <Container>
       {movies.length === 0 ? (
@@ -31,10 +32,10 @@ export default function SearchList({ movies }: any) {
             )}
           </WrapImage>
 
-          <WrapTitle key={movie.id} href={`/detail/${movie.id}`}>
+          <WrapTitle href={`/detail/${movie.id}`}>
             <MovieTitle>{movie.title}</MovieTitle>
           </WrapTitle>
-          <WrapPlayButton key={movie.id} href={`/video/${movie.id}`}>
+          <WrapPlayButton href={`/video/${movie.id}`}>
             <BiPlayCircle size={25} />
           </WrapPlayButton>
         </MovieItem>

@@ -21,9 +21,9 @@ export default function SearchPage() {
   const [searched, setSearched] = useState([] as any);
   const [inputText, setInputText] = useState('');
   const [isSearching, setIsSearching] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [endRef, inView] = useInView();
-
+  console.log("T");
   useEffect(() => {
     async function fetchData() {
       const topRatedData = await getTopRatedData();
@@ -44,7 +44,7 @@ export default function SearchPage() {
       setSearched((prevSearched: any) => [...prevSearched, ...topRatedData[0]]);
     }
     if (inView && !isSearching) {
-      setPage((page) => page + 1)
+      setPage((page) => page + 1);
       fetchData();
     }
   }, [inView]);

@@ -13,7 +13,7 @@ export async function fetchNowPlaying() {
   const nowPlayingRes = await (
     await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
-      { cache: 'force-cache' }
+      { cache: 'no-store' }
     )
   ).json();
   const nowPlayingData = nowPlayingRes.results;
@@ -43,7 +43,7 @@ export async function fetchPopular() {
   const popularRes = await (
     await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
-      { cache: 'force-cache' }
+      { cache: 'no-store' }
     )
   ).json();
   const popularData = popularRes.results;
@@ -54,7 +54,7 @@ export async function fetchDetails(movie: string) {
   const movieDetailsRes = await (
     await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/movie/${movie}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
-      { cache: 'force-cache' }
+      { cache: 'no-store' }
     )
   ).json();
   return movieDetailsRes;
@@ -75,7 +75,7 @@ export async function fetchVideos(movie: any) {
   const movieVideosRes = await (
     await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/movie/${movie}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
-      { cache: 'force-cache' }
+      { cache: 'no-store' }
     )
   ).json();
   return movieVideosRes;

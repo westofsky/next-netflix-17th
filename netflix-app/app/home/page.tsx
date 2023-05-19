@@ -33,6 +33,7 @@ async function getMovieData() {
 
 export default async function main() {
   const movies = await getMovieData();
+  console.log("HH");
   return (
     <Container>
       <Header />
