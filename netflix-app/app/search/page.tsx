@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import SearchList from '@/assets/components/Search/SearchList';
 import { fetchSearch, fetchTopRated } from '@/assets/api/requests';
@@ -27,6 +27,7 @@ export default function SearchPage() {
       setSearched(topRatedData[0]);
     }
     fetchData();
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -49,7 +50,6 @@ export default function SearchPage() {
   const handleDelete = () => {
     setInputText('');
   };
-
   return (
     <Contatiner>
       <SearchWrapper>
@@ -86,6 +86,7 @@ const SearchInputWrapper = styled.div`
 `;
 const SearchBox = styled.input`
   width: 100%;
+  color: white;
   font-weight: 400;
   font-size: 15.213px;
   line-height: 31px;

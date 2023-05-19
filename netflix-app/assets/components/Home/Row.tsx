@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export const Row = ({ title, id, isRoundRow, movies }: any) => {
-  const router = useRouter();
-  console.log(movies);
   return (
     <Movies>
       <Title>{title}</Title>
@@ -13,8 +11,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <ArrowWrapper>
           <ArrowLeft
             onClick={() => {
-              document.getElementById(id)!.scrollLeft +=
-                window.innerWidth - 1300;
+              document.getElementById(id)!.scrollLeft -= 360;
             }}
           >
             {'<'}
@@ -45,8 +42,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <ArrowWrapper>
           <ArrowRight
             onClick={() => {
-              document.getElementById(id)!.scrollLeft -=
-                window.innerWidth - 1300;
+              document.getElementById(id)!.scrollLeft += 360;
             }}
           >
             {'>'}
