@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import SearchList from '@/assets/components/Search/SearchList';
 import { fetchSearch, fetchTopRated } from '@/assets/api/requests';
@@ -23,6 +23,10 @@ export default function SearchPage() {
   const [isSearching, setIsSearching] = useState(false);
   const [page, setPage] = useState(2);
   const [endRef, inView] = useInView();
+  const inputRef = useRef(null as any);
+  if (inputRef.current) {
+    inputRef.current.focus();
+  }
   useEffect(() => {
     async function fetchData() {
       const topRatedData = await getTopRatedData();
@@ -59,9 +63,15 @@ export default function SearchPage() {
       setSearched(searchResults);
     }
   };
-
-  const handleDelete = () => {
+  
+  const handleDelete = async() => {
     setInputText('');
+    const initialResults = await getTopRatedData();
+    setSearched(initialResults[0]);
+    
+    if (inputRef.current) {
+			inputRef.current.focus();
+		}
   };
   return (
     <Contatiner>
@@ -71,6 +81,7 @@ export default function SearchPage() {
             <BiSearch color="#FFFFFF" size={22} />
           </ButtonWrapper>
           <SearchBox
+            ref = {inputRef}
             value={inputText}
             onChange={handleChange}
             placeholder="Search for a movie"

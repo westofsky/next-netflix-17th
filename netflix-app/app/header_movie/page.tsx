@@ -62,6 +62,7 @@ const Movies = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom : 60px;
 `;
 const Container = styled.div``;
 const Title = styled.div`
