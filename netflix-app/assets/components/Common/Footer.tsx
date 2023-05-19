@@ -41,6 +41,7 @@ export const Footer = () => {
           <FooterItem
             onClick={() => {
               setSelected('commingsoon');
+              router.push('/coming');
             }}
             selected={selected === 'commingsoon' ? true : false}
           >
