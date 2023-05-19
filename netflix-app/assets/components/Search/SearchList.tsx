@@ -4,7 +4,6 @@ import { BiPlayCircle } from 'react-icons/bi';
 import Link from 'next/link';
 
 export default function SearchList({ movies }: any) {
-  console.log("ASDF");
   return (
     <Container>
       {movies.length === 0 ? (
