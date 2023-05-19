@@ -31,7 +31,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ params }) => {
       <Header>
         <Poster>
           <BackImg
-            imageUrl={`https://image.tmdb.org/t/p/original${getMovieDetail.poster_path}`}
+            imageurl={`https://image.tmdb.org/t/p/original${getMovieDetail.poster_path}`}
           />
           <BackButton
             onClick={() => {
@@ -121,7 +121,7 @@ const Header = styled.div`
     #000000 100%
   );
 `;
-const BackImg = styled.div<{ imageUrl: string }>`
+const BackImg = styled.div<{ imageurl: string }>`
   width: 375px;
   height: 415px;
   background-image: linear-gradient(
@@ -130,7 +130,7 @@ const BackImg = styled.div<{ imageUrl: string }>`
       rgba(0, 0, 0, 0) 87.26%,
       #000000 100%
     ),
-    url(${(props) => props.imageUrl});
+    url(${(props) => props.imageurl});
   background-size: cover;
   background-position: auto;
 `;
