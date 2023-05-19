@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import listButton from '../Images/Button/list.svg';
-import playButton from '../Images/Button/play.svg';
-import infoButton from '../Images/Button/info.svg';
+import listButton from '../images/Button/list.svg';
+import playButton from '../images/Button/play.svg';
+import infoButton from '../images/Button/info.svg';
 import Link from 'next/link';
 
 export const Button = ({ fetchId }: any) => {
@@ -13,7 +13,7 @@ export const Button = ({ fetchId }: any) => {
         <div className="text">{'My List'}</div>
       </MyListButton>
       <PlayButton>
-        <Link key={fetchId} href={`/video/${fetchId}`}>
+        <Link key={fetchId} href={`/video/${fetchId}`} className = "link">
           <ButtonImage src={playButton.src} />
           <div className="text">{'Play'}</div>
         </Link>
@@ -69,7 +69,10 @@ const PlayButton = styled.div`
   padding-left: 19px;
   margin: 0 45px 0 40px;
   cursor: pointer;
-
+  .link {
+    text-decoration : none;
+    display : flex;
+  }
   .text {
     width: 39px;
     height: 30px;
