@@ -18,7 +18,7 @@ export default async function HeaderMoviePage() {
   return (
     <Container>
       <Title>{'Movies'}</Title>
-      <MovieCard movieData = {nowPlayingMovie} />
+      <MovieCard movieData = {nowPlayingMovie.nowPlaingData[0]} />
     </Container>
   );
 }

@@ -8,7 +8,7 @@ export default function MovieCard({movieData} : any) {
   return (
     <>
       <Movies>
-        {movieData.upComingData[0].map((movie: any) => (
+        {movieData.map((movie: any) => (
           <WrapMovie key= {movie.key}>
             <Image
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -17,7 +17,11 @@ export default function MovieCard({movieData} : any) {
               alt={movie.title}
             />
             <WrapTitle href={`/detail/${movie.id}`}>
-              <MovieTitle>{movie.title}</MovieTitle>
+              {movie.title === undefined ? (
+                <MovieTitle>{movie.name}</MovieTitle>
+              ) : (
+                <MovieTitle>{movie.title}</MovieTitle>
+              )}
             </WrapTitle>
           </WrapMovie>
         ))}
