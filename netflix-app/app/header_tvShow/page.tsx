@@ -1,34 +1,34 @@
 'use client';
 import React from 'react';
-import { fetchNowPlaying } from '@/assets/api/requests';
+import { fetchTvShows } from '@/assets/api/requests';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
 
 async function getMovieData() {
-  const nowPlaingData = await fetchNowPlaying();
+  const tvShowsData = await fetchTvShows();
 
   return {
-    nowPlaingData,
+    tvShowsData,
   };
 }
 
 export default async function HeaderMoviePage() {
-  const nowPlaingMovie = await getMovieData();
+  const tvShowsMovie = await getMovieData();
   return (
     <Container>
-      <Title>{'Movies'}</Title>
+      <Title>{'Tv Shows'}</Title>
       <Movies>
-        {nowPlaingMovie.nowPlaingData[0].map((movie: any) => (
+        {tvShowsMovie.tvShowsData[0].results.map((movie: any) => (
           <WrapMovie>
             <Image
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               width={146}
               height={76}
-              alt={movie.title}
+              alt={movie.name}
             />
             <WrapTitle href={`/detail/${movie.id}`}>
-              <MovieTitle>{movie.title}</MovieTitle>
+              <MovieTitle>{movie.name}</MovieTitle>
             </WrapTitle>
           </WrapMovie>
         ))}

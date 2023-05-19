@@ -24,16 +24,14 @@ export async function fetchNowPlaying() {
 
 export async function fetchTopRated(page?: number) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
-  
+
   if (page) {
     url += `&page=${page}`;
   } else {
     url += '&page=1';
   }
 
-  const topRatedRes = await (
-    await fetch(url, { cache: 'force-cache' })
-  ).json();
+  const topRatedRes = await (await fetch(url, { cache: 'force-cache' })).json();
 
   const topRatedData = topRatedRes.results;
   return [topRatedData];
@@ -79,4 +77,15 @@ export async function fetchVideos(movie: any) {
     )
   ).json();
   return movieVideosRes;
+}
+
+export async function fetchTvShows() {
+  const tvShows = await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/tv/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+      { cache: 'no-store' }
+    )
+  ).json();
+  const tvShowsData = tvShows.results;
+  return [tvShows];
 }
