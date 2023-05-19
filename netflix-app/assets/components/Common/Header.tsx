@@ -25,7 +25,7 @@ export const Header = () => {
         <LogoLink href={'/'}>
           <LogoWrapper src={`/netflix_trans.png`}></LogoWrapper>
         </LogoLink>
-        <LogoLink href={'/home'}>
+        <LogoLink href={'/header_tvShow'}>
           <HeaderMenu>TV Shows</HeaderMenu>
         </LogoLink>
         <LogoLink href={'/header_movie'}>
