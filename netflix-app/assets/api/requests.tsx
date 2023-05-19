@@ -22,13 +22,19 @@ export async function fetchNowPlaying() {
   return [nowPlayingData, nowPlayingDataBackDrop];
 }
 
-export async function fetchTopRated() {
+export async function fetchTopRated(page?: number) {
+  let url = `${process.env.NEXT_PUBLIC_API_URL}/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
+  
+  if (page) {
+    url += `&page=${page}`;
+  } else {
+    url += '&page=1';
+  }
+
   const topRatedRes = await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
-      { cache: 'force-cache' }
-    )
+    await fetch(url, { cache: 'force-cache' })
   ).json();
+
   const topRatedData = topRatedRes.results;
   return [topRatedData];
 }

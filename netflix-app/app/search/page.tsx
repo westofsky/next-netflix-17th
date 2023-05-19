@@ -1,18 +1,19 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SearchList from '@/assets/components/Search/SearchList';
 import { fetchSearch, fetchTopRated } from '@/assets/api/requests';
 import { BiSearch, BiX } from 'react-icons/bi';
 import SearchResultText from '@/assets/components/Search/SearchResultText';
+import { useInView } from 'react-intersection-observer';
 
 async function getSearchData(e: string) {
   const searchData = await fetchSearch(e);
   return searchData;
 }
 
-async function getTopRatedData() {
-  const topRatedData = await fetchTopRated();
+async function getTopRatedData(page?: number) {
+  const topRatedData = await fetchTopRated(page);
   return topRatedData;
 }
 
@@ -20,7 +21,8 @@ export default function SearchPage() {
   const [searched, setSearched] = useState([] as any);
   const [inputText, setInputText] = useState('');
   const [isSearching, setIsSearching] = useState(false);
-  
+  const [page, setPage] = useState(1);
+  const [endRef, inView] = useInView();
   useEffect(() => {
     async function fetchData() {
       const topRatedData = await getTopRatedData();
@@ -34,7 +36,17 @@ export default function SearchPage() {
     if (inputText.length == 0) setIsSearching(false);
     else setIsSearching(true);
   }, [inputText]);
-
+  useEffect(() => {
+    async function fetchData() {
+      const topRatedData = await getTopRatedData(page);
+      setSearched((prevSearched: any) => [...prevSearched, ...topRatedData[0]]);
+    }
+    if (inView && !isSearching) {
+      setPage((page) => page + 1)
+      fetchData();
+    }
+  }, [inView]);
+  
   const handleChange = async (e: { target: { value: any } }) => {
     setInputText(e.target.value);
 
@@ -70,6 +82,7 @@ export default function SearchPage() {
         <SearchResultText isSearch={isSearching} />
 
         <SearchList movies={searched} />
+        <div ref = {endRef}></div>
       </SearchWrapper>
     </Contatiner>
   );
