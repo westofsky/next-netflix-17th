@@ -80,20 +80,15 @@ const Movie = styled.div`
   :hover {
     transform: scale(0.975);
     transition: transform 0.35s;
-    color: white;
   }
 `;
 const Title = styled.div`
   width: 150px;
   height: 45px;
-
-  font-family: 'SF Pro Display';
-  font-style: normal;
   font-weight: 700;
   font-size: 26.7482px;
   line-height: 20px;
   letter-spacing: -0.0733945px;
-
   color: #ffffff;
 `;
 const Movies = styled.div`

@@ -23,6 +23,7 @@ export default function SearchPage() {
   const [isSearching, setIsSearching] = useState(false);
   const [page, setPage] = useState(1);
   const [endRef, inView] = useInView();
+
   useEffect(() => {
     async function fetchData() {
       const topRatedData = await getTopRatedData();
@@ -31,7 +32,7 @@ export default function SearchPage() {
     fetchData();
     window.scrollTo(0, 0);
   }, []);
-  
+
   useEffect(() => {
     if (inputText.length == 0) setIsSearching(false);
     else setIsSearching(true);
@@ -58,7 +59,7 @@ export default function SearchPage() {
       setSearched(searchResults);
     }
   };
-  
+
   const handleDelete = () => {
     setInputText('');
   };
@@ -95,21 +96,16 @@ const SearchInputWrapper = styled.div`
   align-items: center;
   margin-top: 50px;
   height: 50px;
-
   background: #424242;
 `;
 const SearchBox = styled.input`
   width: 100%;
-  color : white;
-  font-family: 'SF Pro Display';
-  font-style: normal;
+  color: white;
   font-weight: 400;
   font-size: 15.213px;
   line-height: 31px;
   border: none;
-
   letter-spacing: 0.206667px;
-
   background: #424242;
   outline: none;
 `;
