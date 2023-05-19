@@ -25,7 +25,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
                   width = {103}
                   height = {161}
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  alt={movie.name}
+                  alt={movie.title}
                   className = "rect"
                 ></Image>
               </Link>
@@ -36,7 +36,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
                     width = {100}
                     height = {100}
                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                    alt={movie.name}
+                    alt={movie.title}
                     className = "round"
                   />
                 </WrapRoundMovie>
