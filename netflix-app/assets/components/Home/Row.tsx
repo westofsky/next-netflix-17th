@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export const Row = ({ title, id, isRoundRow, movies }: any) => {
   return (
@@ -20,19 +20,24 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <Movie id={id}>
           {movies[0].map((movie: any) =>
             !isRoundRow ? (
-              <Link key={movie.id} href={`/detail/${movie.id}`}>
-                <RectangularMovie
-                  key={movie.id}
+              <Link key={movie.id} href={`/detail/${movie.id}`} prefetch>
+                <Image
+                  width = {103}
+                  height = {161}
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt={movie.name}
-                ></RectangularMovie>
+                  className = "rect"
+                ></Image>
               </Link>
             ) : (
-              <Link key={movie.id} href={`/detail/${movie.id}`}>
+              <Link key={movie.id} href={`/detail/${movie.id}`} prefetch>
                 <WrapRoundMovie key={movie.id}>
-                  <RoundMovie
+                  <Image
+                    width = {100}
+                    height = {100}
                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                     alt={movie.name}
+                    className = "round"
                   />
                 </WrapRoundMovie>
               </Link>
@@ -81,6 +86,20 @@ const Movie = styled.div`
     transform: scale(0.975);
     transition: transform 0.35s;
   }
+  
+  .rect{
+    margin-right: 7px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .round{
+    margin-right: 7px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
 `;
 const Title = styled.div`
   width: 150px;
@@ -93,21 +112,6 @@ const Title = styled.div`
 `;
 const Movies = styled.div`
   padding-left: 18px;
-`;
-const RectangularMovie = styled.img`
-  margin-right: 7px;
-  width: 103px;
-  height: 161px;
-  border-radius: 4px;
-  cursor: pointer;
-`;
-const RoundMovie = styled.img`
-  margin-right: 7px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
 `;
 const WrapRoundMovie = styled.div`
   width: 100px;
