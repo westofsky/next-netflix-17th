@@ -76,7 +76,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ params }) => {
         <Iframe
           width="640"
           height="360"
-          src={`https://www.youtube.com/embed/${movieKey}?controls=0&autoplay=1&loop=1&mute=1&playlist=${movieKey}`}
+          src={`https://www.youtube.com/embed/${movieKey}?controls=0&autoplay=1&loop=1&playlist=${movieKey}`}
           title="YouTube video player"
           allow="autoplay; fullscreen"
         ></Iframe>
