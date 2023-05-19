@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import playButton from '@/assets/components/images/Button/play.svg';
 import { fetchDetails } from '@/assets/api/requests';
+import Link from 'next/link';
 
 async function getMovieDetails(movieId: string) {
   const getMovieDetail = await fetchDetails(movieId);
@@ -38,8 +39,14 @@ const DetailPage = ({
         <S>
           {/* 컴포넌트 명 다시 바꾸기 */}
           <PlayButton>
-            <ButtonImage src={playButton.src} />
-            <div className="text">{'Play'}</div>
+            <Link
+              key={movieDetail.getMovieDetail.id}
+              href={`/video/${movieDetail.getMovieDetail.id}`}
+              className="link"
+            >
+              <ButtonImage src={playButton.src} />
+              <div className="text">{'Play'}</div>
+            </Link>
           </PlayButton>
         </S>
         <Title>{movieDetail.getMovieDetail.title}</Title>
@@ -67,7 +74,7 @@ const BackButton = styled.button`
   background: none;
   color: white;
   font-size: 1.3rem;
-  cursor : pointer;
+  cursor: pointer;
 `;
 const ButtonImage = styled.img``;
 const PlayButton = styled.div`
@@ -80,7 +87,10 @@ const PlayButton = styled.div`
   padding-left: 19px;
   margin: 13px 36px 0 36px;
   cursor: pointer;
-
+  .link {
+    text-decoration: none;
+    display: flex;
+  }
   .text {
     width: 39px;
     height: 30px;
