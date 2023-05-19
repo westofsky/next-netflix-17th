@@ -28,7 +28,7 @@ export const Header = () => {
         <LogoLink href={'/home'}>
           <HeaderMenu>TV Shows</HeaderMenu>
         </LogoLink>
-        <LogoLink href={'/home'}>
+        <LogoLink href={'/header_movie'}>
           <HeaderMenu>Movies</HeaderMenu>
         </LogoLink>
         <LogoLink href={'/home'}>
