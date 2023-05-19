@@ -13,7 +13,7 @@ export const Button = ({ fetchId }: any) => {
         <div className="text">{'My List'}</div>
       </MyListButton>
       <PlayButton>
-        <Link key={fetchId} href={`/video/${fetchId}`} className = "link">
+        <Link key={fetchId} href={`/video/${fetchId}`} className="link">
           <ButtonImage src={playButton.src} />
           <div className="text">{'Play'}</div>
         </Link>
@@ -45,17 +45,9 @@ const MyListButton = styled.div`
   .text {
     width: 60px;
     height: 20px;
-    user-select: none;
-    cursor: pointer;
-
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 400;
     font-size: 13.6416px;
     line-height: 20px;
-
     text-align: center;
-    letter-spacing: -0.0408px;
     color: #ffffff;
   }
 `;
@@ -70,22 +62,16 @@ const PlayButton = styled.div`
   margin: 0 45px 0 40px;
   cursor: pointer;
   .link {
-    text-decoration : none;
-    display : flex;
+    text-decoration: none;
+    display: flex;
   }
   .text {
     width: 39px;
     height: 30px;
     padding-left: 15px;
-    user-select: none;
-    cursor: pointer;
-
-    font-family: 'SF Pro Display';
-    font-style: normal;
     font-weight: 600;
     font-size: 20.4624px;
     line-height: 30px;
-
     color: #000000;
   }
 `;
@@ -94,21 +80,8 @@ const InfoButton = styled.div`
   .text {
     width: 22px;
     height: 20px;
-    user-select: none;
-    cursor: pointer;
-
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 400;
     font-size: 13.6416px;
     line-height: 20px;
-    /* identical to box height, or 147% */
-
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.0408px;
-
     color: #ffffff;
   }
 `;

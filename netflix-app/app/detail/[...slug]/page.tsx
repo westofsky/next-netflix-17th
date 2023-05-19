@@ -20,7 +20,7 @@ const DetailPage = ({ params }: { params: { slug: string } }) => {
       <Header>
         <Poster>
           <BackImg
-            src={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
+            imageUrl={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
           />
           <BackButton
             onClick={() => {
@@ -87,14 +87,9 @@ const PlayButton = styled.div`
     width: 39px;
     height: 30px;
     padding-left: 15px;
-    user-select: none;
-    cursor: pointer;
-
-    font-style: normal;
     font-weight: 600;
     font-size: 20.4624px;
     line-height: 30px;
-
     color: #000000;
   }
 `;
@@ -102,13 +97,10 @@ const Title = styled.div`
   left: 32px;
   top: 505px;
   height: 50px;
-
   font-weight: 700;
   font-size: 26.7482px;
   line-height: 30px;
-
   letter-spacing: -0.0733945px;
-
   color: #ffffff;
   margin: 32px 0 0 32px;
 `;
@@ -122,20 +114,26 @@ const Header = styled.div`
     #000000 100%
   );
 `;
-const BackImg = styled.img`
+const BackImg = styled.div<{ imageUrl: string }>`
   width: 375px;
   height: 415px;
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0) 87.26%,
+      #000000 100%
+    ),
+    url(${(props) => props.imageUrl});
+  background-size: cover;
+  background-position: auto;
 `;
 const Preview = styled.div`
   width: 311px;
   height: 43px;
-
   font-size: 13px;
   line-height: 14px;
   font-weight: 400;
-
   letter-spacing: -0.0305636px;
-
   color: rgba(255, 255, 255, 0.83);
   margin: 24px 32px 0 32px;
 `;
