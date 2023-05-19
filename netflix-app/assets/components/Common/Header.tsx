@@ -22,18 +22,18 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <div className={`nav ${show && 'nav_black'}`}>
-        <LogoLink href={'/'}>
+        <Link href={'/'} className="Logo" prefetch={false}>
           <LogoWrapper src={`/netflix_trans.png`}></LogoWrapper>
-        </LogoLink>
-        <LogoLink href={'/header_tvShow'}>
+        </Link>
+        <Link href={'/header_tvShow'} className="Logo" prefetch={false}>
           <HeaderMenu>TV Shows</HeaderMenu>
-        </LogoLink>
-        <LogoLink href={'/header_movie'}>
+        </Link>
+        <Link href={'/header_movie'} className="Logo" prefetch={false}>
           <HeaderMenu>Movies</HeaderMenu>
-        </LogoLink>
-        <LogoLink href={'/home'}>
+        </Link>
+        <Link href={'/home'} className="Logo" prefetch={false}>
           <HeaderMenu>My List</HeaderMenu>
-        </LogoLink>
+        </Link>
       </div>
     </HeaderWrapper>
   );
@@ -55,14 +55,15 @@ const HeaderWrapper = styled.div`
   .nav_black {
     background-color: black;
   }
-`;
-const LogoLink = styled(Link)`
-  text-decoration: none;
-  :hover {
-    transform: scale(0.92);
-    transition: transform 0.35s;
+  .Logo {
+    text-decoration: none;
+    :hover {
+      transform: scale(0.92);
+      transition: transform 0.35s;
+    }
   }
 `;
+const LogoLink = styled(Link)``;
 const HeaderMenu = styled.p`
   font-size: 17.2px;
   color: white;
