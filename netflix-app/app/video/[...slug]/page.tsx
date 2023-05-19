@@ -3,15 +3,20 @@ import React, { use } from 'react';
 import styled from 'styled-components';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import playButton from '@/assets/components/images/Button/play.svg';
-import { fetchVideos } from '@/assets/api/requests';
+import { fetchVideos,fetchDetails } from '@/assets/api/requests';
 
 async function getMovieVideo(movieId: string) {
   const getVideo = await fetchVideos(movieId);
 
-  console.log('getVideo', getVideo);
-
   return { getVideo };
 }
+
+async function getMovieDetails(movieId: string) {
+  const getMovieDetail = await fetchDetails(movieId);
+
+  return { getMovieDetail };
+}
+
 const DetailPage = ({
   params,
   searchParams,
@@ -22,16 +27,23 @@ const DetailPage = ({
   const router = useRouter();
 
   const movieDetail = use(getMovieVideo(params.slug[0]));
-
-  console.log('movieDetail', movieDetail);
+  const movieInfo = use(getMovieDetails(params.slug[0]));
 
   const h = movieDetail.getVideo.results[0].key;
-
-  console.log('h', h);
-
+  
+  
   return (
     <>
       <Header>
+        <I>
+          <BackButton
+            onClick={() => {
+              router.push('/home');
+            }}
+          >
+            x
+          </BackButton>
+        </I>
         <Iframe
           width="640"
           height="360"
@@ -41,8 +53,8 @@ const DetailPage = ({
           allow="autoplay; fullscreen"
           //allowfullscreen
         ></Iframe>
-        <Title>{movieDetail.getVideo.title}</Title>
-        <Preview>{movieDetail.getVideo.overview}</Preview>
+        <Title>{movieInfo.getMovieDetail.title}</Title>
+        <Preview>{movieInfo.getMovieDetail.overview}</Preview>
       </Header>
     </>
   );
@@ -58,18 +70,15 @@ const S = styled.div`
   }
 `;
 const I = styled.div`
-  position: relative;
-  display: flex;
 `;
 const BackButton = styled.button`
-  position: absolute;
   border: none;
-  top: 5%;
-  left: 90%;
   background: none;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   cursor: pointer;
+  float: right;
+  margin-bottom : 10px;
 `;
 const ButtonImage = styled.img``;
 const PlayButton = styled.div`
@@ -116,6 +125,7 @@ const Title = styled.div`
 const Header = styled.div`
   width: 375px;
   height: 415px;
+  padding-top : 10px;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.45) 0%,
