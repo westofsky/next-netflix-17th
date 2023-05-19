@@ -40,6 +40,7 @@ export default function SearchPage() {
   
   useEffect(() => {
     async function fetchData() {
+      console.log(searched);
       const topRatedData = await getTopRatedData(page);
       setSearched((prevSearched: any) => [...prevSearched, ...topRatedData[0]]);
     }

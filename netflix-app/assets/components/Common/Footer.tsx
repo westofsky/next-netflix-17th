@@ -11,7 +11,7 @@ export const Footer = () => {
   const router = useRouter();
   const pathname = usePathname();
   const isRoot = pathname === '/';
-  const [selected, setSelected] = useState('home');
+  const [selected, setSelected] = useState<string>('home');
   return (
     <Container>
       {isRoot ? (

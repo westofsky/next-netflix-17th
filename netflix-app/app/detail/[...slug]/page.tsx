@@ -6,21 +6,32 @@ import playButton from '@/assets/components/images/Button/play.svg';
 import { fetchDetails } from '@/assets/api/requests';
 import Link from 'next/link';
 
+interface MovieDetail {
+  id: number;
+  poster_path: string;
+  title: string;
+  overview: string;
+}
+
 async function getMovieDetails(movieId: string) {
   const getMovieDetail = await fetchDetails(movieId);
-
   return { getMovieDetail };
 }
-const DetailPage = ({ params }: { params: { slug: string } }) => {
+
+interface DetailPageProps {
+  params: { slug: string[] };
+}
+
+const DetailPage: React.FC<DetailPageProps> = ({ params }) => {
   const router = useRouter();
 
-  const movieDetail = use(getMovieDetails(params.slug[0]));
+  const { getMovieDetail }: { getMovieDetail: MovieDetail } = use(getMovieDetails(params.slug[0]));
   return (
-    <Conatainer>
+    <Container>
       <Header>
         <Poster>
           <BackImg
-            imageUrl={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
+            imageUrl={`https://image.tmdb.org/t/p/original${getMovieDetail.poster_path}`}
           />
           <BackButton
             onClick={() => {
@@ -32,20 +43,16 @@ const DetailPage = ({ params }: { params: { slug: string } }) => {
         </Poster>
         <Button>
           <PlayButton>
-            <Link
-              key={movieDetail.getMovieDetail.id}
-              href={`/video/${movieDetail.getMovieDetail.id}`}
-              className="link"
-            >
+            <Link key={getMovieDetail.id} href={`/video/${getMovieDetail.id}`} className="link">
               <ButtonImage src={playButton.src} />
               <div className="text">{'Play'}</div>
             </Link>
           </PlayButton>
         </Button>
-        <Title>{movieDetail.getMovieDetail.title}</Title>
-        <Preview>{movieDetail.getMovieDetail.overview}</Preview>
+        <Title>{getMovieDetail.title}</Title>
+        <Preview>{getMovieDetail.overview}</Preview>
       </Header>
-    </Conatainer>
+    </Container>
   );
 };
 
@@ -138,6 +145,6 @@ const Preview = styled.div`
   margin: 24px 32px 0 32px;
 `;
 const ButtonImage = styled.img``;
-const Conatainer = styled.div``;
+const Container = styled.div``;
 
 export default DetailPage;

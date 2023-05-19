@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 export const Header = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {

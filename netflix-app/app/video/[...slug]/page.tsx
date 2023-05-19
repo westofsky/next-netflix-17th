@@ -1,7 +1,7 @@
 'use client';
 import React, { use, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { fetchVideos, fetchDetails } from '@/assets/api/requests';
 
 async function getMovieVideo(movieId: string) {
@@ -16,11 +16,32 @@ async function getMovieDetails(movieId: string) {
   return { getMovieDetail };
 }
 
-const DetailPage = ({ params }: { params: { slug: string } }) => {
+interface VideoResult {
+  key: string;
+}
+
+interface MovieInfo {
+  title: string;
+  overview: string;
+}
+
+interface MovieVideo {
+  getVideo: {
+    results: VideoResult[];
+  };
+}
+
+interface DetailPageProps {
+  params: {
+    slug: string[];
+  };
+}
+
+const DetailPage: React.FC<DetailPageProps> = ({ params }) => {
   const router = useRouter();
-  const [movieDetail, setMovieDetail] = useState([] as any);
-  const [movieInfo, setMovieInfo] = useState(null as any);
-  const [movieKey, setMovieKey] = useState('' as any);
+  const [movieDetail, setMovieDetail] = useState<MovieVideo | null>(null);
+  const [movieInfo, setMovieInfo] = useState<MovieInfo | null>(null);
+  const [movieKey, setMovieKey] = useState<string>('');
 
   useEffect(() => {
     async function fetchInfo() {
