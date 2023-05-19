@@ -2,8 +2,8 @@
 import React from 'react';
 import { fetchNowPlaying } from '@/assets/api/requests';
 import styled from 'styled-components';
-import Image from 'next/image';
 import Link from 'next/link';
+import MovieCard from '@/assets/components/Common/MovieCard';
 
 async function getMovieData() {
   const nowPlaingData = await fetchNowPlaying();
@@ -14,25 +14,11 @@ async function getMovieData() {
 }
 
 export default async function HeaderMoviePage() {
-  const nowPlaingMovie = await getMovieData();
+  const nowPlayingMovie = await getMovieData();
   return (
     <Container>
       <Title>{'Movies'}</Title>
-      <Movies>
-        {nowPlaingMovie.nowPlaingData[0].map((movie: any) => (
-          <WrapMovie>
-            <Image
-              src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-              width={146}
-              height={76}
-              alt={movie.title}
-            />
-            <WrapTitle href={`/detail/${movie.id}`}>
-              <MovieTitle>{movie.title}</MovieTitle>
-            </WrapTitle>
-          </WrapMovie>
-        ))}
-      </Movies>
+      <MovieCard movieData = {nowPlayingMovie} />
     </Container>
   );
 }

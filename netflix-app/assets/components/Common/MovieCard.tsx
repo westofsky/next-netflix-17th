@@ -1,24 +1,27 @@
 'use client';
 import React from 'react';
-import { fetchUpComing } from '@/assets/api/requests';
 import styled from 'styled-components';
+import Image from 'next/image';
 import Link from 'next/link';
-import MovieCard from "@/assets/components/Common/MovieCard";
 
-async function getMovieData() {
-  const upComingData = await fetchUpComing();
-
-  return {
-    upComingData,
-  };
-}
-
-export default async function ComingPage() {
-  const comingMovie = await getMovieData();
+export default function MovieCard({movieData} : any) {
   return (
     <>
-      <Title>{'Coming Soon'}</Title>
-      <MovieCard movieData = {comingMovie}/>
+      <Movies>
+        {movieData.upComingData[0].map((movie: any) => (
+          <WrapMovie key= {movie.key}>
+            <Image
+              src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+              width={146}
+              height={76}
+              alt={movie.title}
+            />
+            <WrapTitle href={`/detail/${movie.id}`}>
+              <MovieTitle>{movie.title}</MovieTitle>
+            </WrapTitle>
+          </WrapMovie>
+        ))}
+      </Movies>
     </>
   );
 }

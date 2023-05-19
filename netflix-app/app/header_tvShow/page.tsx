@@ -2,8 +2,7 @@
 import React from 'react';
 import { fetchTvShows } from '@/assets/api/requests';
 import styled from 'styled-components';
-import Image from 'next/image';
-import Link from 'next/link';
+import MovieCard from '@/assets/components/Common/MovieCard';
 
 async function getMovieData() {
   const tvShowsData = await fetchTvShows();
@@ -19,19 +18,7 @@ export default async function HeaderMoviePage() {
   return (
     <Container>
       <Title>{'Tv Shows'}</Title>
-      <Movies>
-        {tvShowsMovie.tvShowsData[0].results.map((movie: any) => (
-          <WrapMovie key={movie.key}>
-            <Image
-              src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-              width={146}
-              height={76}
-              alt={movie.name}
-            />
-            <MovieTitle>{movie.name}</MovieTitle>
-          </WrapMovie>
-        ))}
-      </Movies>
+      <MovieCard movieData = {tvShowsMovie} />
     </Container>
   );
 }

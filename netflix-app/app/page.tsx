@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import NetflixComponent from '@/assets/components/Landing/NetflixComponent';
 import { useState } from 'react';
-
+import { IntroText } from '@/assets/components/Landing/IntroText';
 export default function app() {
   const [enter, setEnter] = useState(false);
   const handleEnterNetflix = () => {
@@ -16,10 +16,7 @@ export default function app() {
         </WrapLanding>
       ) : (
         <WrapEntire onClick = {handleEnterNetflix}>
-          <IntroText>
-            화면을 클릭해주세요
-            <IntroTextSmall>(소리를 키시는 것을 권장드립니다)</IntroTextSmall>
-          </IntroText>
+          <IntroText />
         </WrapEntire>
       )}
       
@@ -48,13 +45,4 @@ const WrapEntire = styled.div`
   justify-content : center;
   cursor : pointer;
   
-`
-
-const IntroText = styled.div`
-  color : white;
-  font-size : 30px;
-`
-const IntroTextSmall = styled.p`
-  text-align : center;
-  font-size : 15px;
 `
