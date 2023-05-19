@@ -66,7 +66,6 @@ export default function SearchPage() {
 
         <SearchList movies={searched} />
       </SearchWrapper>
-      <Footer />
     </>
   );
 }

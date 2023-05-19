@@ -4,61 +4,68 @@ import { FiSearch } from 'react-icons/fi';
 import { MdOutlineVideoLibrary } from 'react-icons/md';
 import { HiDownload } from 'react-icons/hi';
 import { BsList } from 'react-icons/bs';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export const Footer = () => {
   const router = useRouter();
-
+  const pathname = usePathname();
+  const isRoot = pathname === '/';
   const [selected, setSelected] = useState('home');
-
+  console.log(isRoot);
   return (
-    <FooterWrapper>
-      <FooterItem
-        onClick={() => {
-          setSelected('home');
-          router.push('/home');
-        }}
-        selected = {selected ==='home' ? true : false}
-      >
-        <BiHomeAlt2 />
-        <FooterItemText>Home</FooterItemText>
-      </FooterItem>
-      <FooterItem
-        onClick={() => {
-        	setSelected('search');
-          router.push('/search');
-        }}
-        selected = {selected ==='search' ? true : false}
-      >
-        <FiSearch />
-        <FooterItemText>Search</FooterItemText>
-      </FooterItem>
-      <FooterItem 
-				onClick={() => {
-					setSelected('commingsoon');
-				}}
-        selected = {selected ==='commingsoon' ? true : false}>
-        <MdOutlineVideoLibrary />
-        <FooterItemText>Coming Soon</FooterItemText>
-      </FooterItem>
-      <FooterItem 
-				onClick={() => {
-					setSelected('donwloads');
-				}}
-        selected = {selected ==='donwloads' ? true : false}>
-        <HiDownload />
-        <FooterItemText>Downloads</FooterItemText>
-      </FooterItem>
-      <FooterItem 
-				onClick={() => {
-					setSelected('more');
-				}}
-        selected = {selected ==='more' ? true : false}>
-        <BsList />
-        <FooterItemText>More</FooterItemText>
-      </FooterItem>
-    </FooterWrapper>
+    <>
+      {isRoot ? (
+        <></>
+      ) : (
+        <FooterWrapper>
+        <FooterItem
+          onClick={() => {
+            setSelected('home');
+            router.push('/home');
+          }}
+          selected = {pathname ==='/home' ? true : false}
+        >
+          <BiHomeAlt2 />
+          <FooterItemText>Home</FooterItemText>
+        </FooterItem>
+        <FooterItem
+          onClick={() => {
+            setSelected('search');
+            router.push('/search');
+          }}
+          selected = {pathname ==='/search' ? true : false}
+        >
+          <FiSearch />
+          <FooterItemText>Search</FooterItemText>
+        </FooterItem>
+        <FooterItem 
+          onClick={() => {
+            setSelected('commingsoon');
+          }}
+          selected = {selected ==='commingsoon' ? true : false}>
+          <MdOutlineVideoLibrary />
+          <FooterItemText>Coming Soon</FooterItemText>
+        </FooterItem>
+        <FooterItem 
+          onClick={() => {
+            setSelected('donwloads');
+          }}
+          selected = {selected ==='donwloads' ? true : false}>
+          <HiDownload />
+          <FooterItemText>Downloads</FooterItemText>
+        </FooterItem>
+        <FooterItem 
+          onClick={() => {
+            setSelected('more');
+          }}
+          selected = {selected ==='more' ? true : false}>
+          <BsList />
+          <FooterItemText>More</FooterItemText>
+        </FooterItem>
+      </FooterWrapper>
+      )}
+    </>
   );
 };
 

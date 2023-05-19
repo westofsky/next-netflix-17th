@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Image from 'next/image';
 import {BiPlayCircle} from 'react-icons/bi';
+import Link from "next/link";
 
 export default function SearchList({ movies }: any) {
 	console.log(movies);
@@ -28,8 +29,7 @@ export default function SearchList({ movies }: any) {
 					</WrapImage>
 					
           <MovieTitle>{movie.title}</MovieTitle>
-					
-					<WrapPlayButton>
+					<WrapPlayButton key={movie.id} href={`/video/${movie.id}`}>
 						<BiPlayCircle size={25}/>
 					</WrapPlayButton>
         </MovieItem>
@@ -64,7 +64,7 @@ const ResultNoneText = styled.p`
 	
 `
 
-const WrapPlayButton = styled.div`
+const WrapPlayButton = styled(Link)`
 	cursor : pointer;
 	color : white;
 `
