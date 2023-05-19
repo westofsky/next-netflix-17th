@@ -20,24 +20,32 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <Movie id={id}>
           {movies[0].map((movie: any) =>
             !isRoundRow ? (
-              <Link key={movie.id} href={`/detail/${movie.id}`} prefetch>
+              <Link
+                key={movie.id}
+                href={`/detail/${movie.id}`}
+                prefetch={false}
+              >
                 <Image
-                  width = {103}
-                  height = {161}
+                  width={103}
+                  height={161}
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt={movie.title}
-                  className = "rect"
+                  className="rect"
                 ></Image>
               </Link>
             ) : (
-              <Link key={movie.id} href={`/detail/${movie.id}`} prefetch>
+              <Link
+                key={movie.id}
+                href={`/detail/${movie.id}`}
+                prefetch={false}
+              >
                 <WrapRoundMovie key={movie.id}>
                   <Image
-                    width = {100}
-                    height = {100}
+                    width={100}
+                    height={100}
                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                     alt={movie.title}
-                    className = "round"
+                    className="round"
                   />
                 </WrapRoundMovie>
               </Link>
@@ -86,13 +94,13 @@ const Movie = styled.div`
     transform: scale(0.975);
     transition: transform 0.35s;
   }
-  
-  .rect{
+
+  .rect {
     margin-right: 7px;
     border-radius: 4px;
     cursor: pointer;
   }
-  .round{
+  .round {
     margin-right: 7px;
     width: 100px;
     height: 100px;
