@@ -31,7 +31,9 @@ export default function SearchList({ movies }: any) {
             )}
           </WrapImage>
 
-          <MovieTitle>{movie.title}</MovieTitle>
+          <WrapTitle key={movie.id} href={`/detail/${movie.id}`}>
+            <MovieTitle>{movie.title}</MovieTitle>
+          </WrapTitle>
           <WrapPlayButton key={movie.id} href={`/video/${movie.id}`}>
             <BiPlayCircle size={25} />
           </WrapPlayButton>
@@ -41,6 +43,10 @@ export default function SearchList({ movies }: any) {
   );
 }
 
+const WrapTitle = styled(Link)`
+  cursor: pointer;
+  text-decoration-line: none;
+`;
 const MovieItem = styled.div`
   margin-bottom: 10px;
   width: 375px;
