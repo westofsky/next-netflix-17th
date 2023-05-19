@@ -72,8 +72,6 @@ const ArrowWrapper = styled.div`
     color: white;
   }
 `;
-const ArrowLeft = styled.p``;
-const ArrowRight = styled.p``;
 const Movie = styled.div`
   width: 100%;
   display: flex;
@@ -125,3 +123,5 @@ const WrapRoundMovie = styled.div`
   height: 100px;
   margin: 0 0 4px 5px;
 `;
+const ArrowLeft = styled.p``;
+const ArrowRight = styled.p``;

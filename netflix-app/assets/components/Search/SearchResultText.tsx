@@ -1,15 +1,18 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export default function SearchResultText({ isSearch }: any) {
   return (
-    <>
-      <ResultWrapper>{isSearch ? "Search Results" : "Top Searches"}</ResultWrapper>
-    </>
+    <Container>
+      <ResultWrapper>
+        {isSearch ? 'Search Results' : 'Top Searches'}
+      </ResultWrapper>
+    </Container>
   );
 }
 
 const ResultWrapper = styled.p`
   color: white;
-	font-size : 30px;
-	font-weight : bold;
+  font-size: 30px;
+  font-weight: bold;
 `;
+const Container = styled.div``;

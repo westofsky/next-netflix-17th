@@ -14,58 +14,61 @@ export const Footer = () => {
   const [selected, setSelected] = useState('home');
   console.log(isRoot);
   return (
-    <>
+    <Container>
       {isRoot ? (
         <></>
       ) : (
         <FooterWrapper>
-        <FooterItem
-          onClick={() => {
-            setSelected('home');
-            router.push('/home');
-          }}
-          selected = {pathname ==='/home' ? true : false}
-        >
-          <BiHomeAlt2 />
-          <FooterItemText>Home</FooterItemText>
-        </FooterItem>
-        <FooterItem
-          onClick={() => {
-            setSelected('search');
-            router.push('/search');
-          }}
-          selected = {pathname ==='/search' ? true : false}
-        >
-          <FiSearch />
-          <FooterItemText>Search</FooterItemText>
-        </FooterItem>
-        <FooterItem 
-          onClick={() => {
-            setSelected('commingsoon');
-          }}
-          selected = {selected ==='commingsoon' ? true : false}>
-          <MdOutlineVideoLibrary />
-          <FooterItemText>Coming Soon</FooterItemText>
-        </FooterItem>
-        <FooterItem 
-          onClick={() => {
-            setSelected('donwloads');
-          }}
-          selected = {selected ==='donwloads' ? true : false}>
-          <HiDownload />
-          <FooterItemText>Downloads</FooterItemText>
-        </FooterItem>
-        <FooterItem 
-          onClick={() => {
-            setSelected('more');
-          }}
-          selected = {selected ==='more' ? true : false}>
-          <BsList />
-          <FooterItemText>More</FooterItemText>
-        </FooterItem>
-      </FooterWrapper>
+          <FooterItem
+            onClick={() => {
+              setSelected('home');
+              router.push('/home');
+            }}
+            selected={pathname === '/home' ? true : false}
+          >
+            <BiHomeAlt2 />
+            <FooterItemText>Home</FooterItemText>
+          </FooterItem>
+          <FooterItem
+            onClick={() => {
+              setSelected('search');
+              router.push('/search');
+            }}
+            selected={pathname === '/search' ? true : false}
+          >
+            <FiSearch />
+            <FooterItemText>Search</FooterItemText>
+          </FooterItem>
+          <FooterItem
+            onClick={() => {
+              setSelected('commingsoon');
+            }}
+            selected={selected === 'commingsoon' ? true : false}
+          >
+            <MdOutlineVideoLibrary />
+            <FooterItemText>Coming Soon</FooterItemText>
+          </FooterItem>
+          <FooterItem
+            onClick={() => {
+              setSelected('donwloads');
+            }}
+            selected={selected === 'donwloads' ? true : false}
+          >
+            <HiDownload />
+            <FooterItemText>Downloads</FooterItemText>
+          </FooterItem>
+          <FooterItem
+            onClick={() => {
+              setSelected('more');
+            }}
+            selected={selected === 'more' ? true : false}
+          >
+            <BsList />
+            <FooterItemText>More</FooterItemText>
+          </FooterItem>
+        </FooterWrapper>
       )}
-    </>
+    </Container>
   );
 };
 
@@ -87,7 +90,6 @@ const FooterItemText = styled.p`
   font-size: 10px;
   margin-top: 0;
 `;
-
 const FooterItem = styled.div<{ selected: boolean }>`
   cursor: pointer;
   color: ${(props) => (props.selected ? '#E0E0E0' : '#757575')};
@@ -121,4 +123,4 @@ const FooterItem = styled.div<{ selected: boolean }>`
       }
     `}
 `;
-
+const Container = styled.div``;

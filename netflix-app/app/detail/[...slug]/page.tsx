@@ -1,7 +1,7 @@
 'use client';
 import React, { use } from 'react';
 import styled from 'styled-components';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import playButton from '@/assets/components/images/Button/play.svg';
 import { fetchDetails } from '@/assets/api/requests';
 import Link from 'next/link';
@@ -11,20 +11,14 @@ async function getMovieDetails(movieId: string) {
 
   return { getMovieDetail };
 }
-const DetailPage = ({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const DetailPage = ({ params }: { params: { slug: string } }) => {
   const router = useRouter();
 
   const movieDetail = use(getMovieDetails(params.slug[0]));
   return (
-    <>
+    <Conatainer>
       <Header>
-        <I>
+        <Poster>
           <BackImg
             src={`https://image.tmdb.org/t/p/original${movieDetail.getMovieDetail.poster_path}`}
           />
@@ -35,9 +29,8 @@ const DetailPage = ({
           >
             x
           </BackButton>
-        </I>
-        <S>
-          {/* 컴포넌트 명 다시 바꾸기 */}
+        </Poster>
+        <Button>
           <PlayButton>
             <Link
               key={movieDetail.getMovieDetail.id}
@@ -48,21 +41,21 @@ const DetailPage = ({
               <div className="text">{'Play'}</div>
             </Link>
           </PlayButton>
-        </S>
+        </Button>
         <Title>{movieDetail.getMovieDetail.title}</Title>
         <Preview>{movieDetail.getMovieDetail.overview}</Preview>
       </Header>
-    </>
+    </Conatainer>
   );
 };
 
-const S = styled.div`
+const Button = styled.div`
   :hover {
     transform: scale(0.95);
     transition: transform 0.35s;
   }
 `;
-const I = styled.div`
+const Poster = styled.div`
   position: relative;
   display: flex;
 `;
@@ -76,7 +69,6 @@ const BackButton = styled.button`
   font-size: 1.3rem;
   cursor: pointer;
 `;
-const ButtonImage = styled.img``;
 const PlayButton = styled.div`
   height: 45px;
   background: #c4c4c4;
@@ -98,7 +90,6 @@ const PlayButton = styled.div`
     user-select: none;
     cursor: pointer;
 
-    font-family: 'SF Pro Display';
     font-style: normal;
     font-weight: 600;
     font-size: 20.4624px;
@@ -131,12 +122,10 @@ const Header = styled.div`
     #000000 100%
   );
 `;
-
 const BackImg = styled.img`
   width: 375px;
   height: 415px;
 `;
-
 const Preview = styled.div`
   width: 311px;
   height: 43px;
@@ -150,5 +139,7 @@ const Preview = styled.div`
   color: rgba(255, 255, 255, 0.83);
   margin: 24px 32px 0 32px;
 `;
+const ButtonImage = styled.img``;
+const Conatainer = styled.div``;
 
 export default DetailPage;
