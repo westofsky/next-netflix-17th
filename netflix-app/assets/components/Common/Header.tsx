@@ -22,16 +22,16 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <div className={`nav ${show && 'nav_black'}`}>
-        <Link href={'/'} className="Logo" prefetch={false}>
+        <Link href={'/'} className="Logo">
           <LogoWrapper src={`/netflix_trans.png`}></LogoWrapper>
         </Link>
-        <Link href={'/header_tvShow'} className="Logo" prefetch={false}>
+        <Link href={'/header_tvShow'} className="Logo">
           <HeaderMenu>TV Shows</HeaderMenu>
         </Link>
-        <Link href={'/header_movie'} className="Logo" prefetch={false}>
+        <Link href={'/header_movie'} className="Logo">
           <HeaderMenu>Movies</HeaderMenu>
         </Link>
-        <Link href={'/home'} className="Logo" prefetch={false}>
+        <Link href={'/home'} className="Logo">
           <HeaderMenu>My List</HeaderMenu>
         </Link>
       </div>

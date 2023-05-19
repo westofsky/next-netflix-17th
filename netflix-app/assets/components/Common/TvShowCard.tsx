@@ -4,32 +4,26 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function TvShowCard({movieData} : any) {
+export default function TvShowCard({ movieData }: any) {
   return (
     <>
       <Movies>
         {movieData.map((movie: any) => (
-          <WrapMovie key= {movie.id}>
+          <WrapMovie key={movie.id}>
             <Image
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               width={146}
               height={76}
               alt={movie.name}
             />
-            <WrapTitle href={`/detail/${movie.id}`}>
-              <MovieTitle>{movie.name}</MovieTitle>
-            </WrapTitle>
+            <MovieTitle>{movie.name}</MovieTitle>
           </WrapMovie>
         ))}
       </Movies>
     </>
   );
 }
-const WrapTitle = styled(Link)`
-  cursor: pointer;
-  text-decoration-line: none;
-  margin-left: 10px;
-`;
+
 const WrapMovie = styled.div`
   display: flex;
   margin-bottom: 10px;
@@ -46,10 +40,11 @@ const MovieTitle = styled.p`
   overflow: hidden;
   white-space: nowrap;
   width: 180px;
+  margin-left: 10px;
 `;
 const Movies = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom : 60px;
+  padding-bottom: 60px;
 `;

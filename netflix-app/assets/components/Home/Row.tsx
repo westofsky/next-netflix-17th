@@ -20,11 +20,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
         <Movie id={id}>
           {movies[0].map((movie: any) =>
             !isRoundRow ? (
-              <Link
-                key={movie.id}
-                href={`/detail/${movie.id}`}
-                prefetch={false}
-              >
+              <Link key={movie.id} href={`/detail/${movie.id}`}>
                 <Image
                   width={103}
                   height={161}
@@ -34,11 +30,7 @@ export const Row = ({ title, id, isRoundRow, movies }: any) => {
                 ></Image>
               </Link>
             ) : (
-              <Link
-                key={movie.id}
-                href={`/detail/${movie.id}`}
-                prefetch={false}
-              >
+              <Link key={movie.id} href={`/detail/${movie.id}`}>
                 <WrapRoundMovie key={movie.id}>
                   <Image
                     width={100}
