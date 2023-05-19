@@ -18,7 +18,7 @@ export default function app() {
         <WrapEntire onClick = {handleEnterNetflix}>
           <IntroText>
             화면을 클릭해주세요
-            <p className = "smallText">(소리를 키시는 것을 권장드립니다)</p>
+            <IntroTextSmall>(소리를 키시는 것을 권장드립니다)</IntroTextSmall>
           </IntroText>
         </WrapEntire>
       )}
@@ -50,11 +50,11 @@ const WrapEntire = styled.div`
   
 `
 
-const IntroText = styled.p`
+const IntroText = styled.div`
   color : white;
   font-size : 30px;
-  .smallText{
-    text-align : center;
-    font-size : 15px;
-  }
-  `
+`
+const IntroTextSmall = styled.p`
+  text-align : center;
+  font-size : 15px;
+`
