@@ -19,8 +19,10 @@ export const Button = ({ fetchId }: any) => {
         </Link>
       </PlayButton>
       <InfoButton>
-        <ButtonImage src={infoButton.src} />
-        <div className="text">{'Info'}</div>
+        <Link key={fetchId} href={`/detail/${fetchId}`} className="link">
+          <ButtonImage src={infoButton.src} />
+          <div className="text">{'Info'}</div>
+        </Link>
       </InfoButton>
     </Container>
   );
@@ -83,5 +85,8 @@ const InfoButton = styled.div`
     font-size: 13.6416px;
     line-height: 20px;
     color: #ffffff;
+  }
+  .link {
+    text-decoration: none;
   }
 `;
