@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 export const Header = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -22,18 +22,18 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <div className={`nav ${show && 'nav_black'}`}>
-        <LogoLink href={'/'}>
+        <Link href={'/'} className="Logo">
           <LogoWrapper src={`/netflix_trans.png`}></LogoWrapper>
-        </LogoLink>
-        <LogoLink href={'/home'}>
+        </Link>
+        <Link href={'/header_tvShow'} className="Logo">
           <HeaderMenu>TV Shows</HeaderMenu>
-        </LogoLink>
-        <LogoLink href={'/home'}>
+        </Link>
+        <Link href={'/header_movie'} className="Logo">
           <HeaderMenu>Movies</HeaderMenu>
-        </LogoLink>
-        <LogoLink href={'/home'}>
+        </Link>
+        <Link href={'/home'} className="Logo">
           <HeaderMenu>My List</HeaderMenu>
-        </LogoLink>
+        </Link>
       </div>
     </HeaderWrapper>
   );
@@ -53,12 +53,17 @@ const HeaderWrapper = styled.div`
     transition: all 0.5s ease-in;
   }
   .nav_black {
-    background-color: #111;
+    background-color: black;
+  }
+  .Logo {
+    text-decoration: none;
+    :hover {
+      transform: scale(0.92);
+      transition: transform 0.35s;
+    }
   }
 `;
-const LogoLink = styled(Link)`
-  text-decoration: none;
-`;
+const LogoLink = styled(Link)``;
 const HeaderMenu = styled.p`
   font-size: 17.2px;
   color: white;

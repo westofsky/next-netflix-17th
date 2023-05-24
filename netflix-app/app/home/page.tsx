@@ -1,8 +1,8 @@
 'use client';
 import styled from 'styled-components';
-import { Banner } from '@/assets/components/Banner';
-import { Button } from '@/assets/components/Button';
-import { Row } from '@/assets/components/Row';
+import { Banner } from '@/assets/components/Home/Banner';
+import { Button } from '@/assets/components/Home/Button';
+import { Row } from '@/assets/components/Home/Row';
 import {
   fetchNowPlaying,
   fetchPopular,
@@ -37,7 +37,7 @@ export default async function main() {
     <Container>
       <Header />
       <Banner fetchUrl={movies.getBannerData} />
-      <Button />
+      <Button fetchId={movies.getBannerData[1].id} />
       <Rows>
         <Row title="Previews" id="Ps" movies={movies.upComingData} isRoundRow />
         <Row title="NowPlaying" id="NP" movies={movies.nowPlayingData} />
@@ -53,5 +53,5 @@ const Container = styled.div`
 `;
 
 const Rows = styled.div`
-  height: 945px;
+  padding-bottom: 30px;
 `;
